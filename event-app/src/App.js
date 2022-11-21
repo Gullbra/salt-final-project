@@ -2,6 +2,7 @@ import './App.css';
 import { useState, useEffect } from 'react'
 import Header from './components/Header';
 import List from './components/List';
+import AddEvent from './components/AddEvent';
 import axios from 'axios';
 
 
@@ -17,6 +18,7 @@ function App() {
   return (
     <div className="App">
       <Header />
+      <AddEvent partyState={partyState} setPartyState={setPartyState}/>
       <List partyState={partyState} />
     </div>
   );
