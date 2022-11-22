@@ -1,6 +1,7 @@
 const express = require("express");
 const { MongoClient } = require('mongodb');
 const cors = require('cors');
+require('dotenv').config();
 
 const app = express()
 
@@ -8,7 +9,7 @@ app.use(express.json())
 app.use(cors())
 
 const dbMiddleware = async (req, res, next) => {
-	const client = new MongoClient("mongodb+srv://thobde:hello123@thor.hqeuwbp.mongodb.net/?retryWrites=true&w=majority");
+	const client = new MongoClient(process.env.MONGODB_KEY);
 	const clientPromise = client.connect();
 	const db = (await clientPromise).db('event-app');
 	req.data = db;
