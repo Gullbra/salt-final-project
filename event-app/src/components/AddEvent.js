@@ -10,7 +10,7 @@ const AddEvent = ({ partyState, setPartyState }) => {
     event.preventDefault()
 
     axios
-      .post('http://api.localhostr.se/events', {
+      .post('https://api.localhostr.se/events', {
         title: titleRef.current.value,
         desc: descRef.current.value
       })

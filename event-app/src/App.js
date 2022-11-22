@@ -11,7 +11,7 @@ function App() {
   const [partyState, setPartyState] = useState([]);
   
   useEffect(() => {
-    axios.get('http://api.localhostr.se/events')
+    axios.get('https://api.localhostr.se/events')
       .then(response => setPartyState(response.data))
   }, [])
 
