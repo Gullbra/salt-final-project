@@ -9,7 +9,7 @@
     "start": "nodemon server.js"
   },
   "engines": {
-    "node": ">=14 <15"
+    "node": "16"
   },
   "name": "server",
   "version": "1.0.0",
