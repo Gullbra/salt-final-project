@@ -4,7 +4,7 @@ import './List.css';
 const List = ({ partyState }) => {
   
   return (
-    <section>
+    <section className="list__section">
       {
         partyState.map( party => <EventCard key={party._id} party={party} />)
       }

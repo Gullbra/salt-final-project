@@ -22,12 +22,12 @@ const AddEvent = ({ partyState, setPartyState }) => {
   } 
 
   return (
-    <form onSubmit={addEvent}>
-			<label htmlFor="titleInput">Title</label>
-      <input ref={titleRef} name="title" id="titleInput" placeholder="title..."></input>
-			<label htmlFor="descInput">Description</label>
-      <input ref={descRef} name="desc" id="descInput" placeholder="description..."></input>
-			<button type="submit">Add</button>
+    <form className="addEvent__form" onSubmit={addEvent}>
+			<label className="addEvent__label-title" htmlFor="titleInput">Title</label>
+      <input className="addEvent__input-title" ref={titleRef} name="title" id="titleInput" placeholder="title..."></input>
+			<label className="addEvent__label-desc" htmlFor="descInput">Description</label>
+      <input className="addEvent__input-desc" ref={descRef} name="desc" id="descInput" placeholder="description..."></input>
+			<button className="addEvent__button" type="submit">Add</button>
     </form>
   )
 }
