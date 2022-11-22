@@ -33,4 +33,4 @@ app.post('/events', dbMiddleware, async (req, res) => {
 	res.status(201).json({...event});
 })
 
-app.listen(9000, () => console.log('http://localhost:9000'))
+app.listen(3000, () => console.log('http://localhost:3000'))
