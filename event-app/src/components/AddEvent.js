@@ -10,7 +10,7 @@ const AddEvent = ({ partyState, setPartyState }) => {
     event.preventDefault()
 
     axios
-      .post('https://event-app-3zx2.onrender.com/events', {
+      .post('http://13.50.131.25/events', {
         title: titleRef.current.value,
         desc: descRef.current.value
       })
