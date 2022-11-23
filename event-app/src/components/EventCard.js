@@ -5,9 +5,9 @@ const EventCard = ({ party }) => {
   const { title, desc } = party
 
   return (
-    <article>
-      <h1>{title}</h1>
-      <p>{desc}</p>
+    <article className="eventCard">
+      <h1 className="eventCard__title">{title}</h1>
+      <p className="eventCard__desc">{desc}</p>
     </article>
   )
 }
