@@ -6,6 +6,7 @@ require('dotenv').config();
 const app = express()
 
 app.use(express.json())
+app.use(express.static('static'))
 app.use(cors())
 
 const dbMiddleware = async (req, res, next) => {
@@ -32,16 +33,13 @@ app.post('/events', dbMiddleware, (req, res) => {
 		.catch(() => res.status(500).send('There was an error!'))
 })
 
-app.delete('/events/:id', dbMiddleware, async (req, res) => {
+app.delete('/events/:id', dbMiddleware, (req, res) => {
 	const db = req.data;	
 	const collection = db.collection('events');
-	const result = await collection.deleteOne( {_id: ObjectId(req.params.id)} )
-
-	if (result.deletedCount === 1) {
-	  res.status(204).send("Successfully deleted one document.")
-    } else {
-	  res.status(404).send("No documents matched the query. Deleted 0 documents.")
-    }
+	
+	collection.deleteOne( {_id: ObjectId(req.params.id)} )
+		.then(() => res.status(204).send("Successfully deleted one document."))
+		.catch(err => res.status(404).send("No documents matched the query. Deleted 0 documents."))
 })
 
 app.patch('/events/:id', dbMiddleware, (req, res) => {
