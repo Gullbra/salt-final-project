@@ -4,7 +4,7 @@ import Header from './components/Header';
 import List from './components/List';
 import AddEvent from './components/AddEvent';
 import axios from 'axios';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Routes, Route } from "react-router-dom";
 
 
 function App() {
