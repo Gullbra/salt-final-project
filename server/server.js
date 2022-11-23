@@ -28,7 +28,7 @@ app.get('/events', dbMiddleware, async (req, res) => {
 app.post('/events', dbMiddleware, async (req, res) => {
 	const db = req.data;	
 	const collection = db.collection('events');
-	const event = { title: req.body.title, desc: req.body.desc };
+	const event = { title: req.body.title, desc: req.body.desc, location: req.body.location, date: req.body.date };
 	const result = await collection.insertOne(event);
 
 	res.status(201).json({...event});

@@ -2,12 +2,15 @@ import './EventCard.css';
 
 const EventCard = ({ party }) => {
 
-  const { title, desc } = party
+  const { title, location, date } = party
 
   return (
     <article className="eventCard">
-      <h1 className="eventCard__title">{title}</h1>
-      <p className="eventCard__desc">{desc}</p>
+      <h2 className="eventCard__title">{title}</h2>
+      <ul className='eventCard__list'>
+        <li className='eventCard__location'>{location}</li>
+        <li className='eventCard__date'>{date}</li>
+      </ul>
     </article>
   )
 }

@@ -8,5 +8,9 @@
 
 body {
   font-family: 'Montserrat', sans-serif;
-  text-align: center;
+  background-image: url('./assets/backgroundphone.png');
+  background-repeat: no-repeat;
+  color: #FFFBEA;
+  background-position: center;
+  background-size: cover;
 }

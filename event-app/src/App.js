@@ -4,6 +4,7 @@ import Header from './components/Header';
 import List from './components/List';
 import AddEvent from './components/AddEvent';
 import axios from 'axios';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 
 function App() {
@@ -17,11 +18,16 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
-      <AddEvent partyState={partyState} setPartyState={setPartyState}/>
-      <List partyState={partyState} />
+        <Header />
+        <Routes> 
+          <Route path="/" element={<List partyState={partyState}/>} /> 
+          <Route path="/addevent" element={<AddEvent partyState={partyState} setPartyState={setPartyState}/>} /> 
+        </Routes>
     </div>
   );
 }
 
 export default App;
+
+
+
