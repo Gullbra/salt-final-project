@@ -13,7 +13,19 @@
     width: 25%;
 }
 
+.header__link {
+    background-color: rgba(39, 145, 145, 0.6);
+    color: #FFFBEA;
+    position: fixed;
+    right: 0;
+    margin: 0.8rem;
+    top: 0;
+    border-radius: 50rem;
+    padding: 0.2rem;
+}
 
-
+.icon_person {
+    font-size: 2.5rem;
+}
 
 

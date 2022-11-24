@@ -1,7 +1,5 @@
 import './Header.css';
 import logo from '../assets/logo.svg'
-import LoginButton from './auth/Login';
-import LogoutButton from './auth/Logout';
 import { Link } from 'react-router-dom'
 
 const Header = ({ isAuthenticated }) => {
@@ -10,11 +8,9 @@ const Header = ({ isAuthenticated }) => {
     <nav className="header">
         <img className='header__logo' src={logo} alt='Hostr logo' />
         {isAuthenticated 
-          ? <Link to='/userprofile'>User Profile</Link>
+          ? <Link to='/userprofile' className="header__link"><span class="material-symbols-outlined icon_person">person</span></Link>
           : ''}
-        {isAuthenticated 
-          ? <LogoutButton/>
-          : <LoginButton />}
+     
     </nav>
   )
 }
