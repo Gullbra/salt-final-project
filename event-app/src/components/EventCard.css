@@ -24,3 +24,7 @@
 .eventCard__desc {
     font-size: 0.75rem;
 }
+
+.eventCard__list {
+    list-style: none;
+}

@@ -1,7 +1,13 @@
 .header {
     text-align: center;
+    background-image: url('../assets/secondbackground.png');
 }
 
 .header__logo {
     width: 30%;
 }
+
+
+
+
+
