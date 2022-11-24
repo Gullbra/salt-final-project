@@ -1,6 +1,5 @@
 import './EventCard.css';
-import axios from 'axios'
-import partyimage from '../assets/partyimage.png'
+// import axios from 'axios'
 
 const EventCard = ({ party }) => {
 
