@@ -3,15 +3,16 @@
     flex-direction: column;
     align-items: center;
     overflow-y: scroll;
-    background-image: url('../assets/thirdbackground.png');
-    background-size: cover;
-    background-repeat: no-repeat;
+    /* background-image: url('../assets/thirdbackground.png'); */
+    background-color: #121313;
+    background-size: contain;
+    padding-top: 5rem;
 }
 
 .list_eventLink {
     margin: 0.8rem;
-    background-color: rgba(39, 145, 145, 0.8);
-    padding: 0.25rem;
+    background-color: rgba(39, 145, 145, 0.6);
+    padding: 0.01rem;
     border-radius: 40rem;
     position: fixed;
     bottom: 0;

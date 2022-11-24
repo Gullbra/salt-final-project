@@ -1,10 +1,16 @@
 .header {
     text-align: center;
-    background-image: url('../assets/secondbackground.png');
+    background-image: linear-gradient(to bottom, rgb(28, 28, 28), rgb(28, 28, 28), rgba(128, 128, 128, 0));
+    padding-bottom: 4rem;
+    position: fixed;
+    width: 100%;
+    height: 10%;
+    top: 0;
+    z-index: 10;
 }
 
 .header__logo {
-    width: 30%;
+    width: 25%;
 }
 
 

@@ -1,5 +1,6 @@
 import './EventCard.css';
 import axios from 'axios'
+import partyimage from '../assets/partyimage.png'
 
 const EventCard = ({ party }) => {
 
@@ -12,12 +13,14 @@ const EventCard = ({ party }) => {
 
   return (
     <article className="eventCard">
+      <div className="eventCard__card">
       <h2 className="eventCard__title">{title}</h2>
       <ul className='eventCard__list'>
-        <li className='eventCard__location'>{location}</li>
-        <li className='eventCard__date'>{date}</li>
+        <li className='eventCard__location'>Location: {location}</li>
+        <li className='eventCard__date'>Date & Time: {date}</li>
       </ul>
       {/* <span onClick={deleteThis} className="material-symbols-outlined eventCard__delete">delete</span> */}
+      </div>
     </article>
   )
 }
