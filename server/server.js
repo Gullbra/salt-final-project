@@ -1,7 +1,6 @@
 const express = require("express");
 const { MongoClient, ObjectId } = require('mongodb');
 const cors = require('cors');
-require('dotenv').config();
 
 const app = express()
 
@@ -51,4 +50,4 @@ app.patch('/events/:id', dbMiddleware, (req, res) => {
 		.catch((err) => res.status(404).send("There was an error" + err))
 })
 
-app.listen(3000, () => console.log('http://localhost:3000'))
+app.listen(process.env.PORT, () => console.log(`http://localhost:${process.env.PORT}`))

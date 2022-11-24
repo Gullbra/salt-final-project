@@ -13,7 +13,7 @@ const AddEvent = ({ partyState, setPartyState }) => {
     event.preventDefault()
 
     axios
-      .post('https://api.localhostr.se/events', {
+      .post(`${process.env.REACT_APP_DOMAIN}/events`, {
         title: titleRef.current.value,
         desc: descRef.current.value,
         location: locationRef.current.value,
