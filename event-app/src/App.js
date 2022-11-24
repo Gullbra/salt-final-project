@@ -1,7 +1,7 @@
 import './App.css';
 import { useState, useEffect } from 'react'
 import axios from 'axios';
-import { Routes, Route} from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
 import UserProfile from './components/UserProfile';
@@ -20,23 +20,22 @@ function App() {
       .then(response => setPartyState(response.data))
   }, [])
 
-
   return (
     <div className="App">
-        <Header isAuthenticated={isAuthenticated}/>
-        <Routes> 
-          <Route path="/" element={<List partyState={partyState}/>} />
-          <Route path="/userprofile" element={<UserProfile/>} /> 
+      <Header isAuthenticated={isAuthenticated}/>
+      <Routes> 
+        <Route path="/" element={<List partyState={partyState}/>} />
+        <Route path="/userprofile" element={<UserProfile/>} /> 
 
-          <Route
-            path="/addevent"
-            element={
-              <ProtectedRoute isAuthenticated={isAuthenticated}>
-                <AddEvent partyState={partyState} setPartyState={setPartyState}/>
-              </ProtectedRoute>
-            }
-          />
-        </Routes>
+        <Route
+          path="/addevent"
+          element={
+            <ProtectedRoute isAuthenticated={isAuthenticated}>
+              <AddEvent partyState={partyState} setPartyState={setPartyState}/>
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
     </div>
   );
 }
