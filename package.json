@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "i-all": "cd event-app && npm i && cd ../server && npm i && cd ..",
+    "start": "cd event-app && npm start && cd .."
+  }
+}
