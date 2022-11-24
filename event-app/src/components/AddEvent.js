@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useRef } from 'react';
 import './AddEvent.css'
+import { Link } from 'react-router-dom'
 
 const AddEvent = ({ partyState, setPartyState }) => {
   
@@ -29,21 +30,24 @@ const AddEvent = ({ partyState, setPartyState }) => {
   } 
 
   return (
-    <form className="addEvent" onSubmit={addEvent}>
-			<label className="addEvent__label-title" htmlFor="titleInput">Title</label>
-      <input className="addEvent__input-title" ref={titleRef} name="title" id="titleInput" placeholder="title..." />
+    <div className="addEvent__div">
+      <Link className="addEvent__listLink" to='/'><span class="material-symbols-outlined back-icon">arrow_back_ios_new</span></Link>
+      <form className="addEvent" onSubmit={addEvent}>
+        <label className="addEvent__label-title" htmlFor="titleInput">Title</label>
+        <input className="addEvent__input-title" ref={titleRef} name="title" id="titleInput" placeholder="Write a title..." />
 
-			<label className="addEvent__label-desc" htmlFor="descInput">Description</label>
-      <input className="addEvent__input-desc" ref={descRef} name="desc" id="descInput" placeholder="description..." />
+        <label className="addEvent__label-desc" htmlFor="descInput">Description</label>
+        <input className="addEvent__input-desc" ref={descRef} name="desc" id="descInput" placeholder="Write a description..." />
 
-			<label className="addEvent__label-location" htmlFor="locationInput">Location</label>
-      <input className="addEvent__input-location" ref={locationRef} name="location" id="locationInput" placeholder="location..." />
+        <label className="addEvent__label-location" htmlFor="locationInput">Location</label>
+        <input className="addEvent__input-location" ref={locationRef} name="location" id="locationInput" placeholder="Add location..." />
 
-			<label className="addEvent__label-date" htmlFor="dateInput">Date</label>
-      <input className="addEvent__input-date" ref={dateRef} name="date" id="dateInput" type='datetime-local' />
+        <label className="addEvent__label-date" htmlFor="dateInput">Date</label>
+        <input className="addEvent__input-date" ref={dateRef} name="date" id="dateInput" type='datetime-local' />
 
-			<button className="addEvent__button" type="submit">Add</button>
-    </form>
+        <button className="addEvent__button" type="submit">Add</button>
+      </form>
+    </div>
   )
 }
 

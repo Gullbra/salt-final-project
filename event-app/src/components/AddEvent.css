@@ -1,3 +1,64 @@
-.addEvent *{
+/* .addEvent *{
     display: block;
+    margin: 0.25rem;
+    padding: 0.1rem; 
+    margin-top: 0.5rem;
+
+} */
+
+.addEvent {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 1rem;
+    padding: 1rem;
+    padding-top: 5rem;
 }
+
+.addEvent__listLink {
+    margin: 0.8rem;
+    /* background-color: rgba(39, 145, 145, 0.8); */
+    padding: 0.25rem;
+    border-radius: 40rem;
+    position: fixed;
+    color: #FFFBEA;
+    top: 0px;
+    z-index: 15;
+}
+
+.back-icon {
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.addEvent__button {
+    cursor: pointer;
+    margin: 1rem;
+    padding: 0.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-radius: 0.5rem;
+    border: none;
+    background-color: rgba(39, 145, 145, 0.8);
+    color: #FFFBEA;
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 0.25rem;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.addEvent__input-title, .addEvent__input-desc, .addEvent__input-location, .addEvent__input-date {
+    background-color: rgba(12, 13, 13, 0.8);
+    color: #FCF9F9;
+    border: none;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.15);
+    margin-bottom: 1rem;
+    margin-top: 0.25rem;
+
+}
+
+input {
+    color-scheme: dark;
+  }

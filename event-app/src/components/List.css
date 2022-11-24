@@ -3,4 +3,25 @@
     flex-direction: column;
     align-items: center;
     overflow-y: scroll;
+    /* background-image: url('../assets/thirdbackground.png'); */
+    background-color: #121313;
+    background-size: contain;
+    padding-top: 5rem;
 }
+
+.list_eventLink {
+    margin: 0.8rem;
+    background-color: rgba(39, 145, 145, 0.6);
+    padding: 0.01rem;
+    border-radius: 40rem;
+    position: fixed;
+    bottom: 0;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    right: 0;
+    color: #FFFBEA;
+}
+
+.plus-icon {
+    font-size: 5rem;
+}
+
