@@ -6,7 +6,7 @@ require('dotenv').config()
 const app = express()
 
 app.use(express.json())
-app.use(express.static('static'))
+app.use(express.static(__dirname + '/static'))
 app.use(cors())
 
 const dbMiddleware = async (req, res, next) => {
