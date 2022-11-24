@@ -7,7 +7,6 @@ import axios from 'axios';
 // eslint-disable-next-line
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-
 function App() {
   
   const [partyState, setPartyState] = useState([]);
