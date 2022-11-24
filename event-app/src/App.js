@@ -6,6 +6,7 @@ import AddEvent from './components/AddEvent';
 import axios from 'axios';
 // eslint-disable-next-line
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import UserProfile from './components/UserProfile'
 
 function App() {
   
@@ -20,7 +21,8 @@ function App() {
     <div className="App">
         <Header />
         <Routes> 
-          <Route path="/" element={<List partyState={partyState}/>} /> 
+          <Route path="/" element={<List partyState={partyState}/>} />
+          <Route path="/userprofile" element={<UserProfile/>} /> 
           <Route path="/addevent" element={<AddEvent partyState={partyState} setPartyState={setPartyState}/>} /> 
         </Routes>
     </div>
