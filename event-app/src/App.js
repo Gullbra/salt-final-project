@@ -6,14 +6,14 @@ import AddEvent from './components/AddEvent';
 import axios from 'axios';
 // eslint-disable-next-line
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-
+import UserProfile from './components/UserProfile'
 
 function App() {
   
   const [partyState, setPartyState] = useState([]);
   
   useEffect(() => {
-    axios.get('https://api.localhostr.se/events')
+    axios.get(`${process.env.REACT_APP_DOMAIN}/events`)
       .then(response => setPartyState(response.data))
   }, [])
 
@@ -21,7 +21,8 @@ function App() {
     <div className="App">
         <Header />
         <Routes> 
-          <Route path="/" element={<List partyState={partyState}/>} /> 
+          <Route path="/" element={<List partyState={partyState}/>} />
+          <Route path="/userprofile" element={<UserProfile/>} /> 
           <Route path="/addevent" element={<AddEvent partyState={partyState} setPartyState={setPartyState}/>} /> 
         </Routes>
     </div>

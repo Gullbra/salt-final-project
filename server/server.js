@@ -1,12 +1,12 @@
 const express = require("express");
 const { MongoClient, ObjectId } = require('mongodb');
 const cors = require('cors');
-require('dotenv').config();
+require('dotenv').config()
 
 const app = express()
 
 app.use(express.json())
-app.use(express.static('static'))
+app.use(express.static(__dirname + '/static'))
 app.use(cors())
 
 const dbMiddleware = async (req, res, next) => {
@@ -51,4 +51,4 @@ app.patch('/events/:id', dbMiddleware, (req, res) => {
 		.catch((err) => res.status(404).send("There was an error" + err))
 })
 
-app.listen(3000, () => console.log('http://localhost:3000'))
+app.listen(process.env.PORT, () => console.log(`http://localhost:${process.env.PORT}`))
