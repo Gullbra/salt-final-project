@@ -13,9 +13,9 @@ const UserProfile = () => {
       <Link className="userProfile__listLink" to='/'><span className="material-symbols-outlined back-icon">arrow_back_ios_new</span></Link>
       <h1 className="userProfile__title">User Profile</h1>
       <img className="userProfile__profile" src={user.picture} alt='Profile Pic'/>
-      <p>name: {user.name}</p>
+      <p>name: {user.nickname}</p>
       <p>mail: {user.email} verified: {user.email_verified.toString()}</p>
-      <LogoutButton className="userProfile__logOutBtn" />
+      <LogoutButton />
     </div>
   )
 }
