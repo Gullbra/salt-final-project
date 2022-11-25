@@ -1,20 +1,12 @@
-/* .addEvent *{
-    display: block;
-    margin: 0.25rem;
-    padding: 0.1rem; 
-    margin-top: 0.5rem;
-
-} */
-
 .addEvent {
     display: flex;
     flex-direction: column;
-    margin: 1rem 1rem;
     padding: 1rem;
     padding-top: 5rem;
     background-image: url('../assets/backgroundphone.png');
     background-repeat: no-repeat;
     background-size: cover;
+    height: 100vh;
 }
 
 .addEvent__listLink {
@@ -63,4 +55,4 @@
 
 input {
     color-scheme: dark;
-  }
+}
