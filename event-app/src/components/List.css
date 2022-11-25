@@ -3,7 +3,8 @@
     flex-direction: column;
     align-items: space-between;
     padding-top: 7rem;
-    margin: 0 2rem;
+    padding: 7rem 2rem;
+    width: 100vw;
 }
 
 .list_eventLink {
@@ -22,16 +23,10 @@
     font-size: 5rem;
 }
 
-/* @media screen and (min-width: 500px) {
+@media screen and (min-width: 700px) {
     .list {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 1rem;
+        gap: 2rem;
     }
 }
-
-@media screen and (min-width: 900px) {
-    .list {
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-} */
