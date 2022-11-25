@@ -4,7 +4,6 @@ import './EventCard.css';
 const EventCard = ({ party }) => {
 
   const { title, location, date } = party
-
   // const deleteThis = () => {
   //   axios.delete(`http://localhost:9000/events/${_id}`)
   //     .then(res => console.log(res))
@@ -15,7 +14,7 @@ const EventCard = ({ party }) => {
       <h2 className="eventCard__title">{title}</h2>
       <ul className='eventCard__list'>
         <li className='eventCard__location'>Location: {location}</li>
-        <li className='eventCard__date'>Date & Time: {date}</li>
+        <li className='eventCard__date'>Date: {date}</li>
       </ul>
       {/* <span onClick={deleteThis} className="material-symbols-outlined eventCard__delete">delete</span> */}
     </article>
