@@ -1,12 +1,9 @@
 .list {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    overflow-y: scroll;
-    /* background-image: url('../assets/thirdbackground.png'); */
-    background-color: #121313;
-    background-size: contain;
-    padding-top: 5rem;
+    align-items: space-between;
+    padding-top: 7rem;
+    margin: 0 2rem;
 }
 
 .list_eventLink {
@@ -25,3 +22,16 @@
     font-size: 5rem;
 }
 
+/* @media screen and (min-width: 500px) {
+    .list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .list {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+} */

@@ -4,14 +4,13 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  list-style: none;
 }
 
 body {
   font-family: 'Montserrat', sans-serif;
-  background-image: url('./assets/backgroundphone.png');
-  background-repeat: no-repeat;
+  background-color: rgb(17, 17, 17);
   color: #FFFBEA;
-  background-size: cover;
 }
 
 

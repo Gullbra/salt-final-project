@@ -8,7 +8,7 @@ const Header = ({ isAuthenticated }) => {
     <nav className="header">
         <img className='header__logo' src={logo} alt='Hostr logo' />
         {isAuthenticated 
-          ? <Link to='/userprofile' className="header__link"><span class="material-symbols-outlined icon_person">person</span></Link>
+          ? <Link to='/userprofile' className="header__link"><span className="material-symbols-outlined icon_person">person</span></Link>
           : ''}
      
     </nav>

@@ -12,16 +12,18 @@
     margin: 1rem 1rem;
     padding: 1rem;
     padding-top: 5rem;
+    background-image: url('../assets/backgroundphone.png');
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .addEvent__listLink {
-    margin: 0.8rem;
-    /* background-color: rgba(39, 145, 145, 0.8); */
-    padding: 0.25rem;
-    border-radius: 40rem;
+    margin: 1rem;
+    padding: 0.5rem;
     position: fixed;
     color: #FFFBEA;
-    top: 0px;
+    top: 0;
+    left: 0;
     z-index: 15;
 }
 

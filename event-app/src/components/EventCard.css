@@ -1,25 +1,16 @@
 .eventCard {
-    width: 50%;
-    margin-top: 0.5rem;
-    height: 5.625rem;
-    height: 7rem;
-    width: 19.375rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+    margin-top: 4rem;
     background-color: rgba(17, 17, 17, 0.8);
     border-radius: 1rem;
-    align-items: center;
     color: #DEDAE0;
-    padding: 0.6rem;
-    padding-right: 20%;
     background-image:linear-gradient(to right, rgb(28, 28, 28),  rgba(128, 128, 128, 0)), url('../assets/partyimage.png');
     background-repeat: none;
     background-size: 100%;
-    filter: drop-shadow(2px 2px 10px rgba(255, 255, 255, 0.20));
-}
-
-.eventCard__card {
-    padding: 0.5rem 0.2rem 0.5rem 0.5rem;
-    margin: 0rem 0 0 0.5rem;
-    border-radius: 0.5rem;
+    box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.20);
 }
 
 .eventCard__title {
@@ -44,8 +35,10 @@
     margin-bottom: 0.5rem;
 }
 
-.eventCard__list {
-    list-style: none;
+@media screen and (min-width: 500px) {
+    .eventCard {
+        padding: 10rem 2rem 2rem 2rem;
+        background-image:linear-gradient(to top, rgb(28, 28, 28),  rgba(128, 128, 128, 0)), url('../assets/partyimage.png');
+        width: auto;
+    }
 }
-
-

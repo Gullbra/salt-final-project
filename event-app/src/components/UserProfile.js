@@ -10,7 +10,7 @@ const UserProfile = () => {
 
   return (
     <div className="userProfile">
-            <Link className="addEvent__listLink" to='/'><span class="material-symbols-outlined back-icon">arrow_back_ios_new</span></Link>
+      <Link className="userProfile__listLink" to='/'><span className="material-symbols-outlined back-icon">arrow_back_ios_new</span></Link>
       <h1 className="userProfile__title">User Profile</h1>
       <img className="userProfile__profile" src={user.picture} alt='Profile Pic'/>
       <p>name: {user.name}</p>

@@ -31,7 +31,7 @@ const AddEvent = ({ partyState, setPartyState }) => {
 
   return (
     <div className="addEvent__div">
-      <Link className="addEvent__listLink" to='/'><span class="material-symbols-outlined back-icon">arrow_back_ios_new</span></Link>
+      <Link className="addEvent__listLink" to='/'><span className="material-symbols-outlined back-icon">arrow_back_ios_new</span></Link>
       <form className="addEvent" onSubmit={addEvent}>
         <label className="addEvent__label-title" htmlFor="titleInput">Title</label>
         <input className="addEvent__input-title" ref={titleRef} name="title" id="titleInput" placeholder="Write a title..." />
