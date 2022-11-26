@@ -9,11 +9,22 @@ app.use(express.json())
 app.use(express.static(__dirname + '/static'))
 app.use(cors())
 
+console.log('establishing connection and fetching database...')
+const client = new MongoClient(process.env.MONGODB_KEY);
+const db = client.connect()
+  .then(clientConnection => {
+    console.log('...connection established')
+    return clientConnection.db('event-app')
+  })
+  .then(db => {
+    console.log('...database fetched')
+    return db
+  })
+  .catch(err => console.log(err.message))
+  .finally(() => console.log('Access attempt ended'))
+
 const dbMiddleware = async (req, res, next) => {
-	const client = new MongoClient(process.env.MONGODB_KEY);
-	const clientPromise = client.connect();
-	const db = (await clientPromise).db('event-app');
-	req.data = db;
+	req.data = await db;
 	next()
 }
 
