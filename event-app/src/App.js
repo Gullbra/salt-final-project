@@ -10,9 +10,8 @@ import Header from './components/Header';
 import List from './components/List';
 import AddEvent from './components/AddEvent';
 
-function App() {
-  
-  const [partyState, setPartyState] = useState([]);
+function App() {  
+  const [ partyState, setPartyState ] = useState([]);
   const { isAuthenticated } = useAuth0();
 
   useEffect(() => {
@@ -24,8 +23,10 @@ function App() {
     <div className="App">
       <Header isAuthenticated={isAuthenticated}/>
       <Routes> 
-        <Route path="/" element={<List partyState={partyState}/>} />
-        <Route path="/userprofile" element={<UserProfile/>} /> 
+        <Route path="/" element={<List partyState={partyState} partiesFiltered={null}/>} />
+        <Route path="/userprofile" element={<UserProfile partyState={partyState} setPartyState={setPartyState}/>} />
+        {/* <Route path="/userprofile/" element={<UserProfile partyState={partyState} />} /> */}
+
 
         <Route
           path="/addevent"
