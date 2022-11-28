@@ -4,8 +4,6 @@ import axios from 'axios'
 
 const EventCard = ({ party, partyState, setPartyState, yourParties, setYourParties }) => {
   const { user, isAuthenticated } = useAuth0();
-
-
   const { title, location, date, userID } = party
 
 
@@ -17,12 +15,10 @@ const EventCard = ({ party, partyState, setPartyState, yourParties, setYourParti
         newYourParties.splice(partyIndex, 1)
         setYourParties(newYourParties)
 
-        const partyStateIndex = partyState.indexOf(party)
-        if (partyStateIndex !== -1) {
-          const newPartyState = partyState.slice()
-          newPartyState.splice(partyStateIndex, 1)
-          setPartyState(newPartyState)
-        }
+        const newPartyState = partyState.slice()
+        const bigIndex = partyState.indexOf(party)
+        newPartyState.splice(bigIndex, 1)
+        setPartyState(newPartyState)
       })
   }
 
