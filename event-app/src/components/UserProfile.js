@@ -40,8 +40,7 @@ const UserProfile = ({ partyState, setPartyState }) => {
       <p>Mail: {user.email} </p>
       </div>
       <LogoutButton />
-
-      <List 
+      <List
         partyState={partyState} 
         setPartyState={setPartyState} 
         yourParties={yourParties} 

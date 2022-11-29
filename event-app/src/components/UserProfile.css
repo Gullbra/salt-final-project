@@ -27,7 +27,7 @@
 
 .userProfile__logOutBtn {
     cursor: pointer;
-    margin: 1rem;
+    margin: 0.5rem;
     padding: 0.5rem;
     padding-left: 2rem;
     padding-right: 2rem;
@@ -54,4 +54,11 @@ p {
     border-radius: 0.5rem;
     padding: 1rem;
     margin: 0.5rem;
+}
+
+.userProfile__eventlist {
+    white-space: nowrap;
+    display: inline-block;
+    overflow-x: scroll;
+    overflow-y: hidden;
 }
