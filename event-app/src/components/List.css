@@ -13,7 +13,6 @@
     padding: 0.01rem;
     position: fixed;
     bottom: 0;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
     right: 0;
     color: #FFFBEA;
 }
@@ -30,6 +29,8 @@
 
 .list--profile .eventCard {
     box-shadow: none;
+    width: 300px;
+    min-width: 300px;
 }
 
 @media screen and (min-width: 500px) {
