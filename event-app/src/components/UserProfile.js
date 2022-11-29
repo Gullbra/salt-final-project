@@ -33,19 +33,19 @@ const UserProfile = ({ partyState, setPartyState }) => {
         <span className="material-symbols-outlined back-icon">arrow_back_ios_new</span>
       </Link>
 
-      <h1 className="userProfile__title">User Profile</h1>
       <img className="userProfile__profile" src={user.picture} alt='Profile Pic'/>
       <div className="userProfile__card">
       <p>Name: {user.nickname}</p>
       <p>Mail: {user.email} </p>
       </div>
-      <LogoutButton />
+      <h2>My events</h2>
       <List
         partyState={partyState} 
         setPartyState={setPartyState} 
         yourParties={yourParties} 
         setYourParties={setYourParties}
         showDelBtn={true}/>
+        <LogoutButton />
       </div>
     )
   )
