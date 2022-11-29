@@ -1,6 +1,7 @@
 import './EventCard.css';
 import axios from 'axios'
 import { DateTime } from 'luxon'
+import { Link } from 'react-router-dom';
 
 const EventCard = ({ party, partyState, setPartyState, yourParties, setYourParties, showDelBtn }) => {
   const { title, location, date } = party
@@ -29,7 +30,7 @@ const EventCard = ({ party, partyState, setPartyState, yourParties, setYourParti
   }
 
   return (
-    <article className="eventCard">
+    <Link className="eventCard" to={`/events/${party._id}`}>
       <h2 className="eventCard__title">{title}</h2>
       <ul className='eventCard__list'>
         <li className='eventCard__location'>Location: {location}</li>
@@ -38,7 +39,7 @@ const EventCard = ({ party, partyState, setPartyState, yourParties, setYourParti
       </ul>
       {showDelBtn &&
         (<span onClick={deleteThis} className="material-symbols-outlined eventCard__delete">delete</span>)}
-    </article>
+    </Link>
   )
 }
 
