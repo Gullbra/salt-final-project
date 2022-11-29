@@ -13,7 +13,7 @@ const UserProfile = ({ partyState, setPartyState }) => {
   
   useEffect( () => {
     if (user) {
-      axios.get(`${process.env.REACT_APP_DOMAIN}/events/${user.sub}`)
+      axios.get(`${process.env.REACT_APP_DOMAIN}/events/${user.sub.split('|')[1]}`)
       .then(response => {
         setYourParties(response.data)
       })
