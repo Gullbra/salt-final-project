@@ -21,7 +21,7 @@ const AddEvent = ({ partyState, setPartyState }) => {
         desc: descRef.current.value,
         location: locationRef.current.value,
         date: dateRef.current.value,
-        userID: user.sub
+        userID: user.sub.split('|')[1]
       })
       .then(() => {
         titleRef.current.value = ''

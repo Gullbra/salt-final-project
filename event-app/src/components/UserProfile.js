@@ -14,7 +14,7 @@ const UserProfile = ({ partyState, setPartyState }) => {
   useEffect( () => {
     if (user) {
       axios
-        .get(`${process.env.REACT_APP_DOMAIN}/events/${user.sub}`)
+        .get(`${process.env.REACT_APP_DOMAIN}/events/${user.sub.split('|')[1]}`)
         .then(response => {
           setYourParties(response.data)
         })
@@ -35,8 +35,10 @@ const UserProfile = ({ partyState, setPartyState }) => {
 
       <h1 className="userProfile__title">User Profile</h1>
       <img className="userProfile__profile" src={user.picture} alt='Profile Pic'/>
-      <p>name: {user.nickname}</p>
-      <p>mail: {user.email} verified: {user.email_verified.toString()}</p>
+      <div className="userProfile__card">
+      <p>Name: {user.nickname}</p>
+      <p>Mail: {user.email} </p>
+      </div>
       <LogoutButton />
 
       <List 
