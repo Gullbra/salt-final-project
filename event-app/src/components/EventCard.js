@@ -3,8 +3,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import axios from 'axios'
 
 const EventCard = ({ party, partyState, setPartyState, yourParties, setYourParties, showDelBtn }) => {
-  const { user, isAuthenticated } = useAuth0();
-  const { title, location, date, userID } = party
+  const { title, location, date } = party
 
   const deleteThis = () => {
     axios.delete(`http://localhost:9000/events/${party._id}`)
