@@ -1,8 +1,11 @@
 import './EventCard.css';
 import axios from 'axios'
+import { DateTime } from 'luxon'
 
 const EventCard = ({ party, partyState, setPartyState, yourParties, setYourParties, showDelBtn }) => {
   const { title, location, date } = party
+
+  const formatedDate = DateTime.fromISO(date)
 
   const deleteThis = () => {
     axios.delete(`http://localhost:9000/events/${party._id}`)
@@ -30,7 +33,8 @@ const EventCard = ({ party, partyState, setPartyState, yourParties, setYourParti
       <h2 className="eventCard__title">{title}</h2>
       <ul className='eventCard__list'>
         <li className='eventCard__location'>Location: {location}</li>
-        <li className='eventCard__date'>Date: {date}</li>
+        <li className='eventCard__date'>{formatedDate.toLocaleString(DateTime.DATE_MED)}</li>
+        <li className='eventCard__time'>Time: {formatedDate.toLocaleString(DateTime.TIME_24_SIMPLE)}</li>
       </ul>
       {showDelBtn &&
         (<span onClick={deleteThis} className="material-symbols-outlined eventCard__delete">delete</span>)}

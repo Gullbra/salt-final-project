@@ -40,16 +40,16 @@ const AddEvent = ({ partyState, setPartyState }) => {
       <Link className="addEvent__listLink" to='/'><span className="material-symbols-outlined back-icon">arrow_back_ios_new</span></Link>
       <form className="addEvent" onSubmit={addEvent}>
         <label className="addEvent__label-title" htmlFor="titleInput">Title</label>
-        <input className="addEvent__input-title" ref={titleRef} name="title" id="titleInput" placeholder="Write a title..." />
+        <input className="addEvent__input-title" required ref={titleRef} name="title" id="titleInput" placeholder="Write a title..." />
 
         <label className="addEvent__label-desc" htmlFor="descInput">Description</label>
-        <input className="addEvent__input-desc" ref={descRef} name="desc" id="descInput" placeholder="Write a description..." />
+        <input className="addEvent__input-desc" required ref={descRef} name="desc" id="descInput" placeholder="Write a description..." />
 
         <label className="addEvent__label-location" htmlFor="locationInput">Location</label>
-        <input className="addEvent__input-location" ref={locationRef} name="location" id="locationInput" placeholder="Add location..." />
+        <input className="addEvent__input-location" required ref={locationRef} name="location" id="locationInput" placeholder="Add location..." />
 
         <label className="addEvent__label-date" htmlFor="dateInput">Date</label>
-        <input className="addEvent__input-date" ref={dateRef} name="date" id="dateInput" type='datetime-local' />
+        <input className="addEvent__input-date" required ref={dateRef} name="date" id="dateInput" type='datetime-local' />
 
         <button className="addEvent__button" type="submit">Add</button>
       </form>

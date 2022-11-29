@@ -5,6 +5,7 @@
     padding-top: 7rem;
     padding: 7rem 2rem;
     width: 100vw;
+    gap: 1rem;
 }
 
 .list_eventLink {
@@ -24,6 +25,16 @@
     font-size: 5rem;
 }
 
+.list--profile {
+    flex-direction: row;
+    overflow-x: scroll;
+    padding: 0 1rem;
+}
+
+.list--profile .eventCard {
+    box-shadow: none;
+}
+
 @media screen and (min-width: 500px) {
     .list {
         display: grid;
@@ -38,3 +49,4 @@
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 }
+

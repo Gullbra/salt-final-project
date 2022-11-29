@@ -7,7 +7,7 @@ const List = ({ partyState, setPartyState, yourParties, setYourParties, showDelB
   const partiesToShow = yourParties ? yourParties : partyState
 
   return (
-    <section className="list">
+    <section className={`list${showDelBtn ? ' list--profile' : ''}`}>
       {
         partiesToShow.map( (party, i) => (
           <EventCard 
@@ -20,7 +20,7 @@ const List = ({ partyState, setPartyState, yourParties, setYourParties, showDelB
             setYourParties={setYourParties}/>
         ))
       }
-      <Link className="list_eventLink" to='/addevent'><span className="material-symbols-outlined plus-icon">add_circle</span></Link>
+      <Link className="list_eventLink " to='/addevent'><span className="material-symbols-outlined plus-icon">add_circle</span></Link>
     </section>
   )
 }
