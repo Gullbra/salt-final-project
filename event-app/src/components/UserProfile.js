@@ -45,7 +45,8 @@ const UserProfile = ({ partyState, setPartyState }) => {
         partyState={partyState} 
         setPartyState={setPartyState} 
         yourParties={yourParties} 
-        setYourParties={setYourParties}/>
+        setYourParties={setYourParties}
+        showDelBtn={true}/>
       </div>
     )
   )
