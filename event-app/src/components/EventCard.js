@@ -1,13 +1,26 @@
 import './EventCard.css';
-// import axios from 'axios'
+import { useAuth0 } from "@auth0/auth0-react";
+import axios from 'axios'
 
-const EventCard = ({ party }) => {
+const EventCard = ({ party, partyState, setPartyState, yourParties, setYourParties }) => {
+  const { user, isAuthenticated } = useAuth0();
+  const { title, location, date, userID } = party
 
-  const { title, location, date } = party
-  // const deleteThis = () => {
-  //   axios.delete(`http://localhost:9000/events/${_id}`)
-  //     .then(res => console.log(res))
-  // }
+
+  const deleteThis = () => {
+    axios.delete(`http://localhost:9000/events/${party._id}`)
+      .then(() => {
+        const partyIndex = yourParties.indexOf(party)
+        const newYourParties = yourParties.slice()
+        newYourParties.splice(partyIndex, 1)
+        setYourParties(newYourParties)
+
+        const newPartyState = partyState.slice()
+        const bigIndex = partyState.indexOf(party)
+        newPartyState.splice(bigIndex, 1)
+        setPartyState(newPartyState)
+      })
+  }
 
   return (
     <article className="eventCard">
@@ -16,7 +29,9 @@ const EventCard = ({ party }) => {
         <li className='eventCard__location'>Location: {location}</li>
         <li className='eventCard__date'>Date: {date}</li>
       </ul>
-      {/* <span onClick={deleteThis} className="material-symbols-outlined eventCard__delete">delete</span> */}
+      {isAuthenticated && userID === user.sub 
+        ? <span onClick={deleteThis} className="material-symbols-outlined eventCard__delete">delete</span> 
+        : null}
     </article>
   )
 }

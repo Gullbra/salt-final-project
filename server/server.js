@@ -44,6 +44,15 @@ app.post('/events', dbMiddleware, (req, res) => {
 		.catch(() => res.status(500).send('There was an error!'))
 })
 
+
+app.get('/events/:userid', dbMiddleware, (req, res) => {
+	const db = req.data;
+	
+	const collection = db.collection('events');
+  	collection.find({ userID : req.params.userid }).toArray()
+			.then(result => res.status(200).json(result));
+})
+
 app.delete('/events/:id', dbMiddleware, (req, res) => {
 	const db = req.data;	
 	const collection = db.collection('events');

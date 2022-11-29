@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useRef } from 'react';
 import './AddEvent.css'
 import { Link } from 'react-router-dom'
+import { useAuth0 } from "@auth0/auth0-react";
 
 const AddEvent = ({ partyState, setPartyState }) => {
   
@@ -9,6 +10,7 @@ const AddEvent = ({ partyState, setPartyState }) => {
   const descRef = useRef(null);
   const locationRef = useRef(null);
   const dateRef = useRef(null);
+  const { user } = useAuth0();
   
   const addEvent = (event) => {
     event.preventDefault()
@@ -19,6 +21,7 @@ const AddEvent = ({ partyState, setPartyState }) => {
         desc: descRef.current.value,
         location: locationRef.current.value,
         date: dateRef.current.value,
+        userID: user.sub
       })
       .then(response => {
         titleRef.current.value = ''
