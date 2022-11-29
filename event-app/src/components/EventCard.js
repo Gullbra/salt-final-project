@@ -6,19 +6,24 @@ const EventCard = ({ party, partyState, setPartyState, yourParties, setYourParti
   const { user, isAuthenticated } = useAuth0();
   const { title, location, date, userID } = party
 
-
   const deleteThis = () => {
     axios.delete(`http://localhost:9000/events/${party._id}`)
       .then(() => {
-        const partyIndex = yourParties.indexOf(party)
-        const newYourParties = yourParties.slice()
-        newYourParties.splice(partyIndex, 1)
-        setYourParties(newYourParties)
+        if (yourParties) {
+          const partyIndex = yourParties.indexOf(party)
+          const newYourParties = yourParties.slice()
+          newYourParties.splice(partyIndex, 1)
+          setYourParties(newYourParties)
+        }
 
-        const newPartyState = partyState.slice()
-        const bigIndex = partyState.indexOf(party)
-        newPartyState.splice(bigIndex, 1)
-        setPartyState(newPartyState)
+        const bigIndex = partyState.findIndex(partyInState => partyInState._id === party._id)
+        if (bigIndex !== -1) {
+          const newPartyState = partyState.slice()
+          newPartyState.splice(bigIndex, 1)
+          setPartyState(newPartyState)
+        } else {
+          throw new Error('Can\'t find party in state')
+        }
       })
   }
 

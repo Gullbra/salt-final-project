@@ -13,10 +13,11 @@ const UserProfile = ({ partyState, setPartyState }) => {
   
   useEffect( () => {
     if (user) {
-      axios.get(`${process.env.REACT_APP_DOMAIN}/events/${user.sub.split('|')[1]}`)
-      .then(response => {
-        setYourParties(response.data)
-      })
+      axios
+        .get(`${process.env.REACT_APP_DOMAIN}/events/${user.sub.split('|')[1]}`)
+        .then(response => {
+          setYourParties(response.data)
+        })
     }
   }, [user])
 
@@ -28,7 +29,10 @@ const UserProfile = ({ partyState, setPartyState }) => {
   return (
     isAuthenticated &&  (    
     <div className="userProfile">
-      <Link className="userProfile__listLink" to='/'><span className="material-symbols-outlined back-icon">arrow_back_ios_new</span></Link>
+      <Link className="userProfile__listLink" to='/'>
+        <span className="material-symbols-outlined back-icon">arrow_back_ios_new</span>
+      </Link>
+
       <h1 className="userProfile__title">User Profile</h1>
       <img className="userProfile__profile" src={user.picture} alt='Profile Pic'/>
       <div className="userProfile__card">
@@ -36,12 +40,15 @@ const UserProfile = ({ partyState, setPartyState }) => {
       <p>Mail: {user.email} </p>
       </div>
       <LogoutButton />
-      <List partyState={partyState} setPartyState={setPartyState} yourParties={yourParties} setYourParties={setYourParties}/>
-      
-    </div>
+
+      <List 
+        partyState={partyState} 
+        setPartyState={setPartyState} 
+        yourParties={yourParties} 
+        setYourParties={setYourParties}/>
+      </div>
     )
   )
 }
 
 export default UserProfile
-

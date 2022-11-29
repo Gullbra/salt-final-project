@@ -23,10 +23,8 @@ function App() {
     <div className="App">
       <Header isAuthenticated={isAuthenticated}/>
       <Routes> 
-        <Route path="/" element={<List partyState={partyState} partiesFiltered={null}/>} />
+        <Route path="/" element={<List partyState={partyState} setPartyState={setPartyState} partiesFiltered={null}/>} />
         <Route path="/userprofile" element={<UserProfile partyState={partyState} setPartyState={setPartyState}/>} />
-        {/* <Route path="/userprofile/" element={<UserProfile partyState={partyState} />} /> */}
-
 
         <Route
           path="/addevent"
