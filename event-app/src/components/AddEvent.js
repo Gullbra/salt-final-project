@@ -23,13 +23,16 @@ const AddEvent = ({ partyState, setPartyState }) => {
         date: dateRef.current.value,
         userID: user.sub
       })
-      .then(response => {
+      .then(() => {
         titleRef.current.value = ''
         descRef.current.value = ''
         locationRef.current.value = ''
-        dateRef.current.value = null
-        setPartyState([...partyState, response.data])
-			});
+        dateRef.current.value = ''
+
+        axios
+          .get(`${process.env.REACT_APP_DOMAIN}/events`)
+          .then(response => setPartyState(response.data))
+			})
   } 
 
   return (
