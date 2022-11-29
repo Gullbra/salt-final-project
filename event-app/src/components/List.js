@@ -2,7 +2,7 @@ import EventCard from "./EventCard"
 import './List.css';
 import { Link } from 'react-router-dom'
 
-const List = ({ partyState, setPartyState, yourParties, setYourParties }) => {
+const List = ({ partyState, setPartyState, yourParties, setYourParties, showDelBtn }) => {
   
   const partiesToShow = yourParties ? yourParties : partyState
 
@@ -13,6 +13,7 @@ const List = ({ partyState, setPartyState, yourParties, setYourParties }) => {
           <EventCard 
             key={i} 
             party={party}
+            showDelBtn={showDelBtn}
             partyState={partyState} 
             setPartyState={setPartyState} 
             yourParties={yourParties} 
