@@ -1,0 +1,22 @@
+.EventPage {
+    margin-top: 7rem;
+    border: 1px solid white;
+    width: 300px;
+    height: calc(100vh - 8rem);
+}
+
+.EventPage__title {
+    word-wrap: break-word;
+    font-size: 2.5rem;
+}
+
+.EventPage__desc,
+.EventPage__location,
+.EventPage__date {
+    word-wrap: break-word;
+}
+
+span {
+    color: #a0a0a0;
+}
+

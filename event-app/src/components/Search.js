@@ -1,6 +1,5 @@
 import React, { useRef } from 'react'
 import axios from 'axios';
-import './Search.css'
 
 const Search = ({setPartyState}) => {
 //   const titleField = useRef()
