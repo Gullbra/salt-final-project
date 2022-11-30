@@ -9,7 +9,8 @@ const EventCard = ({ party, partyState, setPartyState, yourParties, setYourParti
   const formatedDate = DateTime.fromISO(date)
 
   const deleteThis = event => {
-    event.stopPropagation()
+    event.stopPropagation();
+    event.preventDefault();
     axios.delete(`http://localhost:9000/events/${party._id}`)
       .then(() => {
         if (yourParties) {
