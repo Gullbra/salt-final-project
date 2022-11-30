@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useRef } from 'react';
 import './AddEvent.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useAuth0 } from "@auth0/auth0-react";
 
 const AddEvent = ({ partyState, setPartyState }) => {
@@ -11,6 +11,7 @@ const AddEvent = ({ partyState, setPartyState }) => {
   const locationRef = useRef(null);
   const dateRef = useRef(null);
   const { user } = useAuth0();
+  const navigate = useNavigate();
   
   const addEvent = (event) => {
     event.preventDefault()
@@ -32,6 +33,7 @@ const AddEvent = ({ partyState, setPartyState }) => {
         axios
           .get(`${process.env.REACT_APP_DOMAIN}/events`)
           .then(response => setPartyState(response.data))
+          .then(() =>  navigate('/'))
 			})
   } 
 
