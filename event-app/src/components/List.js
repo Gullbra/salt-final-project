@@ -1,6 +1,8 @@
 import EventCard from "./EventCard"
 import './List.css';
 import { Link } from 'react-router-dom'
+// import { useEffect } from "react";
+// import axios from "axios";
 
 const List = ({ partyState, setPartyState, yourParties, setYourParties, showDelBtn }) => {
   

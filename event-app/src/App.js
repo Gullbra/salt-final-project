@@ -22,7 +22,7 @@ function App() {
 
   return (
     <div className="App">
-      <Header isAuthenticated={isAuthenticated}/>
+      <Header isAuthenticated={isAuthenticated} setPartyState={setPartyState} />
       <Search setPartyState={setPartyState}/>
       <Routes> 
         <Route path="/" element={<List partyState={partyState} setPartyState={setPartyState} partiesFiltered={null}/>} />
