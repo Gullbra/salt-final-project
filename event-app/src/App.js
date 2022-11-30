@@ -34,7 +34,8 @@ function App() {
               path={`/events/${party._id}`} 
               element={
                 <EventPage 
-                  party={party}/>
+                  party={party}
+                  setPartyState={setPartyState}/>
               }/>)
         ))}
 
