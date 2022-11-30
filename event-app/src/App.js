@@ -10,6 +10,8 @@ import Header from './components/Header';
 import List from './components/List';
 import AddEvent from './components/AddEvent';
 import Search from './components/Search';
+import EventPage from './components/EventPage';
+
 
 function App() {  
   const [ partyState, setPartyState ] = useState([]);
@@ -27,6 +29,17 @@ function App() {
       <Routes> 
         <Route path="/" element={<List partyState={partyState} setPartyState={setPartyState} partiesFiltered={null}/>} />
         <Route path="/userprofile" element={<UserProfile partyState={partyState} setPartyState={setPartyState}/>} />
+
+        {partyState.map(party => (
+          party._id && (
+            <Route
+              key={party._id} 
+              path={`/events/${party._id}`} 
+              element={
+                <EventPage 
+                  party={party}/>
+              }/>)
+        ))}
 
         <Route
           path="/addevent"

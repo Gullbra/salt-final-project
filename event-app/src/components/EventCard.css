@@ -11,6 +11,7 @@
     background-repeat: none;
     background-size: cover;
     text-shadow: 2px 2px #232323;
+    text-decoration: none;
 }
 
 .eventCard__title {

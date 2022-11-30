@@ -25,10 +25,18 @@
     flex-direction: row;
     overflow-x: scroll;
     padding: 0 1rem;
+    padding-bottom: 0.8rem;
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+}
+
+.list--profile::-webkit-scrollbar {
+    display: none; 
 }
 
 .list--profile .eventCard {
     box-shadow: none;
+    background-image: url('../assets/balloonbackground.png');
     width: 300px;
     min-width: 300px;
 }
