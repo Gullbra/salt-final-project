@@ -13,6 +13,7 @@ root.render(
         domain="dev-5kgys1rrk754w7tp.eu.auth0.com"
         clientId="Kk2dETmKzcU3gDhkaxZpfmLGUCc8KXym"
         redirectUri={window.location.origin}
+        cacheLocation="localstorage"
       >
       <App />
       </Auth0Provider>
