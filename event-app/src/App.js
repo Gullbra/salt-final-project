@@ -9,9 +9,7 @@ import ProtectedRoute from './components/auth/protected-route';
 import Header from './components/Header';
 import List from './components/List';
 import AddEvent from './components/AddEvent';
-import Search from './components/Search';
 import EventPage from './components/EventPage';
-
 
 function App() {  
   const [ partyState, setPartyState ] = useState([]);
@@ -25,7 +23,6 @@ function App() {
   return (
     <div className="App">
       <Header isAuthenticated={isAuthenticated} setPartyState={setPartyState} />
-      <Search setPartyState={setPartyState}/>
       <Routes> 
         <Route path="/" element={<List partyState={partyState} setPartyState={setPartyState} partiesFiltered={null}/>} />
         <Route path="/userprofile" element={<UserProfile partyState={partyState} setPartyState={setPartyState}/>} />
@@ -37,7 +34,8 @@ function App() {
               path={`/events/${party._id}`} 
               element={
                 <EventPage 
-                  party={party}/>
+                  party={party}
+                  setPartyState={setPartyState}/>
               }/>)
         ))}
 

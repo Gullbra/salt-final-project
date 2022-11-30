@@ -3,7 +3,7 @@
     flex-direction: column;
     align-items: space-between;
     padding-top: 7rem;
-    padding: 7rem 2rem;
+    padding: 2rem;
     width: 100vw;
     gap: 1rem;
 }
@@ -41,6 +41,17 @@
     min-width: 300px;
 }
 
+.search {
+    margin-top: 7rem;
+    width: min-content;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.search * {
+    margin-top: 0.5rem;
+}
+
 @media screen and (min-width: 500px) {
     .list {
         display: grid;
@@ -48,11 +59,19 @@
         gap: 2rem;
         max-width: 800px;
     }
+
+    .search {
+        grid-column: span 2;
+    }
 }
 
 @media screen and (min-width: 1000px) {
     .list {
         grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .search {
+        grid-column: span 3;
     }
 }
 

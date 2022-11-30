@@ -1,12 +1,16 @@
 import EventCard from "./EventCard"
 import './List.css';
 import { Link } from 'react-router-dom'
+import Search from "./Search";
 
 const List = ({ partyState, setPartyState, yourParties, setYourParties, showDelBtn }) => {
   
   const partiesToShow = yourParties ? yourParties : partyState
 
   return (
+    <>
+    {!showDelBtn && (<Search setPartyState={setPartyState} />)}
+
     <section className={`list${showDelBtn ? ' list--profile' : ''}`}>
       {
         partiesToShow.map( (party, i) => (
@@ -20,8 +24,10 @@ const List = ({ partyState, setPartyState, yourParties, setYourParties, showDelB
             setYourParties={setYourParties}/>
         ))
       }
-      <Link className="list_eventLink " to='/addevent'><span className="material-symbols-outlined plus-icon">add_circle</span></Link>
     </section>
+    
+    <Link className="list_eventLink " to='/addevent'><span className="material-symbols-outlined plus-icon">add_circle</span></Link>
+    </>
   )
 }
 

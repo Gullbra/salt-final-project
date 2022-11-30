@@ -11,9 +11,11 @@ body {
   font-family: 'Montserrat', sans-serif;
   background-color: #262626;
   color: #FFFBEA;
+}
+
+.App {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
 
