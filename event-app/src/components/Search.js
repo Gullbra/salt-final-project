@@ -1,5 +1,6 @@
 import React, { useRef } from 'react'
 import axios from 'axios';
+import './Search.css';
 
 const Search = ({setPartyState}) => {
 //   const titleField = useRef()
@@ -24,13 +25,13 @@ const Search = ({setPartyState}) => {
         name="titleInp"
         id="titleInp"
         placeholder="Search for an event..." /> */}
-      <label className="search__label-location" htmlFor="locationInp">Location</label>
+      <label className="search__label-location" htmlFor="locationInp">Find a party near you</label>
       <input
         className="search__location"
         ref={locationField}
         name="locationInp"
         id="locationInp"
-        placeholder="location..." />
+        placeholder="Search a location..." />
       <button type='submit' className='search__button'>Search</button>
     </form>
   )

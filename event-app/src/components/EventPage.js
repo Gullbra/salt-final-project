@@ -50,45 +50,43 @@ const EventPage = ({ party, setPartyState }) => {
   }
 
   return (
+    <div className='EventPage__test'>
     <section className="EventPage">
       {editingMode 
-        ? <form onSubmit={updateEvent}>
-            <label htmlFor="inputTitle">Title:
+        ? <form className="EventPage__form" onSubmit={updateEvent}>
+            <label htmlFor="inputTitle" className='EventPage__label'>Title:</label>
               <input 
                 type="text" 
                 ref={inputTitle} 
                 value={editingState.title} 
                 onChange={(event) => setEditingState({...editingState, title: event.target.value})}></input>
-            </label>
-            <label htmlFor="inputDesc">Description:
+            <label htmlFor="inputDesc" className='EventPage__label'>Description:</label>
               <input 
+                className='EventPage__descInput'
                 type="text" 
                 ref={inputDesc} 
                 value={editingState.desc} 
                 onChange={(event) => setEditingState({...editingState, desc: event.target.value})}></input>
-            </label>
-            <label htmlFor="inputLocation">Location: 
+            <label htmlFor="inputLocation" className='EventPage__label'>Location: </label>
               <input 
                 type="text" 
                 ref={inputLocation} 
                 value={editingState.location} 
                 onChange={(event) => setEditingState({...editingState, location: event.target.value})}></input>
-            </label>
-            <label htmlFor="inputDate">Date & Time: 
+            <label htmlFor="inputDate" className='EventPage__label'>Date & Time:</label>
               <input 
                 type="datetime-local" 
                 ref={inputDate} 
                 value={editingState.date} 
                 onChange={(event) => setEditingState({...editingState, date: event.target.value})}></input>
-            </label>
-            <button type='submit'>Save changes</button>
+            <button type='submit' className="EventPage__saveBtn">Save changes</button>
           </form>
-        : <div>
+        : <div className='EventPage__test2'>
             <Link className="userProfile__listLink" to='/'>
               <span className="material-symbols-outlined back-icon">arrow_back_ios_new</span>
             </Link>
 
-            <h2 className="EventPage__title">{party.title}</h2>
+            <h2 className='EventPage__title'>{party.title}</h2>
             <p>{party.desc}</p>
             <ul>
               <li className='EventPage__location'><span>Location:</span> {party.location}</li>
@@ -97,9 +95,10 @@ const EventPage = ({ party, setPartyState }) => {
             </ul>
           </div>}
 
-      {user && user.sub.split('|')[1] === party.userID && (<button type='button' onClick={editFunc}>{editingMode ? 'Stop Editing':'Edit'}</button>)}
+      {user && user.sub.split('|')[1] === party.userID && (<button className="EventPage__stopEditBtn" type='button' onClick={editFunc}>{editingMode ? 'Cancel':'Edit'}</button>)}
 
     </section>
+    </div>
   )
 }
 

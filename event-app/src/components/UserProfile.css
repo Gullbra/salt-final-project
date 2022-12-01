@@ -11,7 +11,8 @@
 }
 
 .userProfile__profile {
-    width: 10rem;
+    width: 6rem;
+    border-radius: 50%;
 }
 
 .userProfile__listLink {
@@ -26,10 +27,8 @@
 
 .userProfile__logOutBtn {
     cursor: pointer;
-    margin: 0.5rem;
-    padding: 0.5rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    margin: 2rem 0.5rem;
+    padding: 0.5rem 2rem;
     border-radius: 0.5rem;
     border: none;
     background-color: rgba(39, 145, 145, 0.8);
@@ -52,7 +51,7 @@ p {
     background-color: rgba(35, 35, 35, 0.8); 
     border-radius: 0.5rem;
     padding: 1rem;
-    margin: 0.5rem;
+    margin: 1rem;
 }
 
 .userProfile__eventlist {
@@ -60,4 +59,9 @@ p {
     display: inline-block;
     overflow-x: scroll;
     overflow-y: hidden;
+}
+
+h2 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
 }
