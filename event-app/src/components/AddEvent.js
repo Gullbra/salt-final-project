@@ -45,7 +45,7 @@ const AddEvent = ({ partyState, setPartyState }) => {
         <input className="addEvent__input-title" required ref={titleRef} name="title" id="titleInput" placeholder="Write a title..." />
 
         <label className="addEvent__label-desc" htmlFor="descInput">Description</label>
-        <input className="addEvent__input-desc" required ref={descRef} name="desc" id="descInput" placeholder="Write a description..." />
+        <textarea className="addEvent__input-desc" required ref={descRef} name="desc" id="descInput" placeholder="Write a description..." />
 
         <label className="addEvent__label-location" htmlFor="locationInput">Location</label>
         <input className="addEvent__input-location" required ref={locationRef} name="location" id="locationInput" placeholder="Add location..." />

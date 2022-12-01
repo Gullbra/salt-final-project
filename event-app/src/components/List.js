@@ -11,7 +11,7 @@ const List = ({ partyState, setPartyState, yourParties, setYourParties, showDelB
     <>
     {!showDelBtn && (<Search setPartyState={setPartyState} />)}
 
-    <section className={`list${showDelBtn ? ' list--profile' : ''}`}>
+    <section className={`${showDelBtn ? 'list--profile' : 'list'}`}>
       {
         partiesToShow.map( (party, i) => (
           <EventCard 

@@ -61,12 +61,12 @@ const EventPage = ({ party, setPartyState }) => {
                 value={editingState.title} 
                 onChange={(event) => setEditingState({...editingState, title: event.target.value})}></input>
             <label htmlFor="inputDesc" className='EventPage__label'>Description:</label>
-              <input 
+              <textarea 
                 className='EventPage__descInput'
                 type="text" 
                 ref={inputDesc} 
                 value={editingState.desc} 
-                onChange={(event) => setEditingState({...editingState, desc: event.target.value})}></input>
+                onChange={(event) => setEditingState({...editingState, desc: event.target.value})}></textarea>
             <label htmlFor="inputLocation" className='EventPage__label'>Location: </label>
               <input 
                 type="text" 
@@ -87,8 +87,8 @@ const EventPage = ({ party, setPartyState }) => {
             </Link>
 
             <h2 className='EventPage__title'>{party.title}</h2>
-            <p>{party.desc}</p>
-            <ul>
+            <p className='EventPage__desc'>{party.desc}</p>
+            <ul className='EventPage__info'>
               <li className='EventPage__location'><span>Location:</span> {party.location}</li>
               <li className='EventPage__date'><span>Date:</span> {formatedDate.toLocaleString(DateTime.DATE_MED)}</li>
               <li className='EventPage__time'><span>Time:</span> {formatedDate.toLocaleString(DateTime.TIME_24_SIMPLE)}</li>

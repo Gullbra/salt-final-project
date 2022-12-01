@@ -23,12 +23,17 @@
 }
 
 .list--profile {
+    display: flex;
     flex-direction: row;
     overflow-x: scroll;
     padding: 0 1rem;
     padding-bottom: 0.8rem;
     -ms-overflow-style: none; 
     scrollbar-width: none; 
+    gap: 1rem;
+    width: 100vw;
+    max-width: 1000px;
+    justify-content: space-between
 }
 
 .list--profile::-webkit-scrollbar {
@@ -68,6 +73,11 @@
 
 @media screen and (min-width: 1000px) {
     .list {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .list--profile {
+        display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
