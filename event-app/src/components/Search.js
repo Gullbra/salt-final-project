@@ -31,7 +31,7 @@ const Search = ({setPartyState}) => {
         ref={locationField}
         name="locationInp"
         id="locationInp"
-        placeholder="Search a location..." />
+        placeholder="Search for a location..." />
       <button type='submit' className='search__button'>Search</button>
     </form>
   )
