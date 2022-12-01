@@ -25,7 +25,7 @@ const Search = ({setPartyState}) => {
         name="titleInp"
         id="titleInp"
         placeholder="Search for an event..." /> */}
-      <label className="search__label-location" htmlFor="locationInp">Find a party near you</label>
+      <label className="search__label-location" htmlFor="locationInp">Find an event near you</label>
       <input
         className="search__location"
         ref={locationField}
