@@ -46,6 +46,7 @@
 .eventCard__delete {
     position: absolute;
     right: 1rem;
+    bottom:0.5rem;
     cursor: pointer;
     width: min-content;
     font-size: 2rem;
