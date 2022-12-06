@@ -23,12 +23,15 @@ const db = client.connect()
   })
   .catch(err => console.log(err.message))
   .finally(() => console.log('Access attempt ended'))
+
 const dbMiddleware = async (req, res, next) => {
-    req.data = await db;
-    next()
+  req.data = await db;
+  next()
 }
 
-app.get('/events', dbMiddleware, (req, res) => {
+app.route('/events')
+  .all(dbMiddleware)
+  .get((req, res) => {
     const db = req.data;
     const titleSearch = req.query.title;
     const locationSearch = req.query.location;
@@ -41,45 +44,48 @@ app.get('/events', dbMiddleware, (req, res) => {
     }
     const collection = db.collection('events');
     collection.find(searchObj).toArray()
-            .then(result => res.status(200).json(result));
-})
-
-app.post('/events', dbMiddleware, (req, res) => {
+      .then(result => res.status(200).json(result));
+  })
+  .post((req, res) => {
     const db = req.data;
     const collection = db.collection('events');
     collection.insertOne({...req.body})
-        .then(() => res.status(201).json({...req.body}))
-        .catch(() => res.status(500).send('There was an error!'))
-})
+    .then(() => res.status(201).json({...req.body}))
+    .catch(() => res.status(500).send('There was an error!'))
+  })
 
-app.get('/events/:id', dbMiddleware, (req, res) => {
+app.route('/events/:id')
+  .all(dbMiddleware)
+  .get((req, res) => {
     const db = req.data;
     const collection = db.collection('events');
     collection.find({ _id : req.params.id }).toArray()
-            .then(result => res.status(200).json(result));
-})
-
-app.get('/users/:userid/events', dbMiddleware, (req, res) => {
-    const db = req.data;
-    const collection = db.collection('events');
-    collection.find({ userID : req.params.userid }).toArray()
-            .then(result => res.status(200).json(result));
-})
-
-app.delete('/events/:id', dbMiddleware, (req, res) => {
+      .then(result => res.status(200).json(result));
+  })
+  .delete((req, res) => {
     const db = req.data;
     const collection = db.collection('events');
     collection.deleteOne( {_id: ObjectId(req.params.id)} )
-        .then(() => res.status(204).send("Successfully deleted one document."))
-        .catch(err => res.status(404).send("No documents matched the query. Deleted 0 documents."))
-})
-
-app.patch('/events/:id', dbMiddleware, (req, res) => {
+      .then(() => res.status(204).send("Successfully deleted one document."))
+      .catch(err => res.status(404).send("No documents matched the query. Deleted 0 documents."))
+  })
+  .patch((req, res) => {
     const db = req.data;
     const collection = db.collection('events');
     collection.updateOne({_id: ObjectId(req.params.id)}, {$set: {...req.body}})
-        .then(() => res.status(204).send("Event edited successfully"))
-        .catch((err) => res.status(404).send("There was an error" + err))
-})
+      .then(() => res.status(204).send("Event edited successfully"))
+      .catch((err) => res.status(404).send("There was an error" + err))
+  })
+
+app.route('/users/:userid/events')
+  .all(dbMiddleware)
+  .get((req, res) => {
+    const db = req.data;
+    const collection = db.collection('events');
+    collection.find({ userID : req.params.userid }).toArray()
+      .then(result => res.status(200).json(result));
+  })
+
+// client.close()
 
 app.listen(process.env.PORT, () => console.log(`http://localhost:${process.env.PORT}`))
