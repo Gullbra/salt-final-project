@@ -8,84 +8,86 @@ app.use(express.json())
 app.use(express.static(__dirname + '/static'))
 app.use(cors())
 
-console.log('establishing connection and fetching database...')
-
 const client = new MongoClient(process.env.MONGODB_KEY);
 
-const db = client.connect()
-  .then(clientConnection => {
-    console.log('...connection established')
-    return clientConnection.db('event-app')
-  })
-  .then(db => {
-    console.log('...database fetched')
-    return db
-  })
-  .catch(err => console.log(err.message))
-  .finally(() => console.log('Access attempt ended'))
+const dbConnect = async (req, res, next) => {
+  console.log('establishing connection and fetching database...')
+  const db = client.connect()
+    .then(clientConnection => {
+      console.log('...connection established')
+      return clientConnection.db('event-handler')
+    })
+    .then(db => {
+      console.log('...database fetched')
+      return db
+    })
+    .catch(err => console.log(err.message))
+    .finally(() => console.log('Connection and access attempt ended'))
 
-const dbMiddleware = async (req, res, next) => {
-  req.data = await db;
+  req.db = await db;
   next()
 }
 
-app.route('/events')
-  .all(dbMiddleware)
-  .get((req, res) => {
-    const db = req.data;
-    const titleSearch = req.query.title;
-    const locationSearch = req.query.location;
-    const searchObj = {}
-    if (titleSearch) {
-        searchObj.title = new RegExp('^' + titleSearch, 'i') ;
-    }
-    if (locationSearch) {
-        searchObj.location = new RegExp('^' + locationSearch, 'i') ;
-    }
-    const collection = db.collection('events');
-    collection.find(searchObj).toArray()
-      .then(result => res.status(200).json(result));
-  })
-  .post((req, res) => {
-    const db = req.data;
-    const collection = db.collection('events');
-    collection.insertOne({...req.body})
-    .then(() => res.status(201).json({...req.body}))
-    .catch(() => res.status(500).send('There was an error!'))
-  })
+const dbClose = () => {
+  client.close();
+}
 
-app.route('/events/:id')
-  .all(dbMiddleware)
-  .get((req, res) => {
-    const db = req.data;
-    const collection = db.collection('events');
-    collection.find({ _id : req.params.id }).toArray()
-      .then(result => res.status(200).json(result));
+app.route('/api/events')
+  .all(dbConnect)
+  .get((req, res, next) => {
+    const searchObj = {}
+    if (req.query && req.query.title) {
+        searchObj.title = new RegExp('^' + req.query.title, 'i') ;
+    }
+    if (req.query && req.query.location) {
+        searchObj.location = new RegExp('^' + req.query.location, 'i') ;
+    }
+
+    req.db.collection('events')
+      .find(searchObj).toArray()
+      .then(result => res.status(200).json(result))
+      .finally(() => next())
   })
-  .delete((req, res) => {
-    const db = req.data;
-    const collection = db.collection('events');
-    collection.deleteOne( {_id: ObjectId(req.params.id)} )
+  .post((req, res, next) => {
+    req.db.collection('events')
+      .insertOne({...req.body})
+      .then(() => res.status(201).json({...req.body}))
+      .catch(() => res.status(500).send('There was an error!'))
+      .finally(() => next())
+  })
+  .all(dbClose)
+
+app.route('/api/events/:id')
+  .all(dbConnect)
+  .get((req, res, next) => {
+    req.db.collection('events')
+      .find({ _id : req.params.id }).toArray()
+      .then(result => res.status(200).json(result))
+      .finally(() => next())
+  })
+  .delete((req, res, next) => {
+    req.db.collection('events')
+      .deleteOne( {_id: ObjectId(req.params.id)} )
       .then(() => res.status(204).send("Successfully deleted one document."))
       .catch(err => res.status(404).send("No documents matched the query. Deleted 0 documents."))
+      .finally(() => next())
   })
-  .patch((req, res) => {
-    const db = req.data;
-    const collection = db.collection('events');
-    collection.updateOne({_id: ObjectId(req.params.id)}, {$set: {...req.body}})
+  .patch((req, res, next) => {
+    req.db.collection('events')
+      .updateOne({_id: ObjectId(req.params.id)}, {$set: {...req.body}})
       .then(() => res.status(204).send("Event edited successfully"))
       .catch((err) => res.status(404).send("There was an error" + err))
+      .finally(() => next())
   })
+  .all(dbClose)
 
-app.route('/users/:userid/events')
-  .all(dbMiddleware)
-  .get((req, res) => {
-    const db = req.data;
-    const collection = db.collection('events');
-    collection.find({ userID : req.params.userid }).toArray()
-      .then(result => res.status(200).json(result));
+app.route('/api/users/:userid/events')
+  .all(dbConnect)
+  .get((req, res, next) => {
+    req.db.collection('events').find({ userID : req.params.userid }).toArray()
+      .then(result => res.status(200).json(result))
+      .finally(() => next())
   })
-
-// client.close()
+  .all(dbClose)
 
 app.listen(process.env.PORT, () => console.log(`http://localhost:${process.env.PORT}`))
