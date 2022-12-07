@@ -38,10 +38,10 @@ const EventPage = ({ party, setPartyState }) => {
     }
 
     axios
-      .patch(`${process.env.REACT_APP_DOMAIN}/events/${party._id}`, newParty)
+      .patch(`${process.env.REACT_APP_DOMAIN}/api/events/${party._id}`, newParty)
       .then(() => {
         axios
-          .get(`${process.env.REACT_APP_DOMAIN}/events`)
+          .get(`${process.env.REACT_APP_DOMAIN}/api/events`)
           .then(response => {
             setPartyState(response.data)
             setEditingMode(!editingMode)

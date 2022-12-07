@@ -11,25 +11,27 @@ app.use(cors())
 const client = new MongoClient(process.env.MONGODB_KEY);
 
 const dbConnect = async (req, res, next) => {
-  console.log('establishing connection and fetching database...')
-  const db = client.connect()
+  console.log('Establishing connection and fetching database...')
+  client.connect()
     .then(clientConnection => {
       console.log('...connection established')
       return clientConnection.db('event-handler')
     })
     .then(db => {
       console.log('...database fetched')
-      return db
+      req.db = db
+      return next()
     })
-    .catch(err => console.log(err.message))
-    .finally(() => console.log('Connection and access attempt ended'))
-
-  req.db = await db;
-  next()
+    .catch(err => {
+      console.log(err.message)
+      return res.status(502).send(err.message)
+    })
+    .finally(() => console.log('Connection and access attempt ended\n'))
 }
 
 const dbClose = () => {
   client.close();
+  console.log("Connection closed\n")
 }
 
 app.route('/api/events')
@@ -84,7 +86,8 @@ app.route('/api/events/:id')
 app.route('/api/users/:userid/events')
   .all(dbConnect)
   .get((req, res, next) => {
-    req.db.collection('events').find({ userID : req.params.userid }).toArray()
+    req.db.collection('events')
+      .find({ userID : req.params.userid }).toArray()
       .then(result => res.status(200).json(result))
       .finally(() => next())
   })

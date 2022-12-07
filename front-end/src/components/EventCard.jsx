@@ -11,7 +11,7 @@ const EventCard = ({ party, partyState, setPartyState, yourParties, setYourParti
   const deleteThis = event => {
     event.stopPropagation();
     event.preventDefault();
-    axios.delete(`${process.env.REACT_APP_DOMAIN}/events/${party._id}`)
+    axios.delete(`${process.env.REACT_APP_DOMAIN}/api/events/${party._id}`)
       .then(() => {
         if (yourParties) {
           const partyIndex = yourParties.indexOf(party)

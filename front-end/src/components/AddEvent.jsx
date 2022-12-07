@@ -17,7 +17,7 @@ const AddEvent = ({ partyState, setPartyState }) => {
     event.preventDefault()
 
     axios
-      .post(`${process.env.REACT_APP_DOMAIN}/events`, {
+      .post(`${process.env.REACT_APP_DOMAIN}/api/events`, {
         title: titleRef.current.value,
         desc: descRef.current.value,
         location: locationRef.current.value,
@@ -31,7 +31,7 @@ const AddEvent = ({ partyState, setPartyState }) => {
         dateRef.current.value = ''
 
         axios
-          .get(`${process.env.REACT_APP_DOMAIN}/events`)
+          .get(`${process.env.REACT_APP_DOMAIN}/api/events`)
           .then(response => setPartyState(response.data))
           .then(() =>  navigate('/'))
 			})

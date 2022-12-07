@@ -11,7 +11,7 @@ const Search = ({setPartyState}) => {
 
     if (locationField.current.value) {
        axios
-          .get(`${process.env.REACT_APP_DOMAIN}/events?location=${locationField.current.value}`)
+          .get(`${process.env.REACT_APP_DOMAIN}/api/events?location=${locationField.current.value}`)
           .then(response => setPartyState(response.data))
     }
     locationField.current.value = '';
