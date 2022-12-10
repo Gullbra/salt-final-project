@@ -2,10 +2,10 @@ import './App.css';
 import { useState, useEffect } from 'react'
 import axios from 'axios';
 import { Routes, Route } from "react-router-dom";
-// import { useAuth0 } from "@auth0/auth0-react";
+import { useAuth0 } from "@auth0/auth0-react";
 
 import UserProfile from './components/UserProfile';
-// import ProtectedRoute from './components/auth/protected-route';
+import ProtectedRoute from './components/auth/protected-route';
 import Header from './components/Header';
 import List from './components/List';
 import AddEvent from './components/AddEvent';
@@ -16,7 +16,7 @@ let firstRender = true
 function App() {  
   const [ partyState, setPartyState ] = useState([]);
 
-  // const { isAuthenticated } = useAuth0();
+  const { isAuthenticated } = useAuth0();
 
   useEffect(() => {
     firstRender 
@@ -30,7 +30,7 @@ function App() {
   return (
     <div className="App">
       <Header 
-        // isAuthenticated={isAuthenticated} 
+        isAuthenticated={isAuthenticated} 
         setPartyState={setPartyState} />
 
       <Routes> 
@@ -58,9 +58,9 @@ function App() {
         <Route
           path="/addevent"
           element={
-            // <ProtectedRoute isAuthenticated={isAuthenticated}>
-            <AddEvent partyState={partyState} setPartyState={setPartyState}/>
-            // </ProtectedRoute>
+            <ProtectedRoute isAuthenticated={isAuthenticated}>
+              <AddEvent partyState={partyState} setPartyState={setPartyState}/>
+            </ProtectedRoute>
           }
         />
 

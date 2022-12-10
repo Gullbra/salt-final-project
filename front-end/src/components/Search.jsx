@@ -3,7 +3,7 @@ import axios from 'axios';
 import './Search.css';
 
 const Search = ({setPartyState}) => {
-//   const titleField = useRef()
+  const titleField = useRef()
   const locationField = useRef()
 
   const searchEvent = event => {
@@ -18,13 +18,13 @@ const Search = ({setPartyState}) => {
   }
   return (
     <form className='search' onSubmit={searchEvent}>
-      {/* <label className="search__label-title" htmlFor="titleInp">Party</label>
+      <label className="search__label-title" htmlFor="titleInp">Party</label>
       <input
         className="search__input"
         ref={titleField}
         name="titleInp"
         id="titleInp"
-        placeholder="Search for an event..." /> */}
+        placeholder="Search for an event..." />
       <label className="search__label-location" htmlFor="locationInp">Find an event near you</label>
       <input
         className="search__location"
