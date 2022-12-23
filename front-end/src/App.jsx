@@ -3,7 +3,8 @@ import axios from 'axios';
 import { Routes, Route } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
-import './App.css';
+// import './styles/App.css';
+import './styles/base.css'
 
 import UserProfile from './components/UserProfile';
 import ProtectedRoute from './components/auth/protected-route';
@@ -14,7 +15,9 @@ import EventPage from './components/EventPage';
 
 let firstRender = true
 
-function App() {  
+function App() {
+
+  /*
   const [ partyState, setPartyState ] = useState([]);
 
   const { isAuthenticated } = useAuth0();
@@ -27,12 +30,18 @@ function App() {
         .then(response => setPartyState(response.data))
   }, [])
 
+  */
+
 
   return (
-    <div className="App">
+    <>
       <Header 
-        isAuthenticated={isAuthenticated} 
-        setPartyState={setPartyState} />
+        // isAuthenticated={isAuthenticated} 
+        // setPartyState={setPartyState} 
+        />
+
+
+      {/* 
 
       <Routes> 
         <Route 
@@ -65,8 +74,9 @@ function App() {
           }
         />
 
-      </Routes>
-    </div>
+      </Routes> 
+      */}
+    </>
   );
 }
 

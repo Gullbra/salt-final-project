@@ -6,3 +6,12 @@
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
 }
+
+:root {
+  --logo-height: 5rem;
+  --header-height: 5.5rem;
+
+  --color-extra-light: #FFFBEA;
+  --color-light: rgb(159, 221, 206);
+  --color-medium: rgba(39, 145, 145);
+}

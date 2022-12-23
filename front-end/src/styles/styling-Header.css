@@ -1,0 +1,41 @@
+.site__header {
+  background: var(--color-light);
+
+  height: var(--header-height);
+  width: 100%;
+
+  text-align: center;
+  position: fixed;
+}
+
+.header__logo {
+  height: var(--logo-height);
+}
+
+.header__button {
+  background-color: var(--color-medium);
+  color: var(--color-extra-light);
+  
+  border-radius: 100%;
+
+  margin-left: 25%;
+  display: inline;
+}
+
+.header__link {
+  /* 
+  position: fixed;
+  background-color: rgba(39, 145, 145, 0.6);
+  color: #f7f7f7;
+  right: 0;
+  margin: 0.8rem;
+  top: 0;
+  padding: 0.2rem;
+  text-align: center; 
+  */
+}
+
+.icon_person {
+  font-size: 2.5rem;
+  color: #FFFBEA; 
+}
