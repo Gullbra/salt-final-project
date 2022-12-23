@@ -2,15 +2,18 @@ import { Link } from 'react-router-dom'
 import axios from 'axios';
 import { useAuth0 } from "@auth0/auth0-react";
 
-import '../styles/styling-Header.css';
-import logo from '../assets/logo.svg'
+import '../styles/styling-HeaderFooter.css';
+import logo_site from '../assets/logo_site.svg'
+import logo_github from '../assets/logo_github.svg'
+import logo_linkedin from '../assets/logo_linkedin.svg'
+
 import icon_key from '../assets/icon_key.svg'
 import icon_account from '../assets/icon_account.svg'
 import LoginButton from './auth/Login';
 
 let isAuthenticated = true
 
-const Header = (
+export const Header = (
   //{ setPartyState }
   ) => {
 
@@ -33,7 +36,7 @@ const Header = (
         <Link to='/'>
           <img className='header__logo' 
             // onClick={getList} 
-            src={logo} 
+            src={logo_site} 
             alt='Hostr logo' />
         </Link>
       </header-column>
@@ -48,6 +51,26 @@ const Header = (
       </header-column>
 
     </header>
+  )
+}
+
+export const Footer = () => {
+
+  return (
+    <footer className='site__footer'>
+      <div>
+        <a href="https://github.com/gullbra" 
+          target="_blank">
+          <img src={logo_github} alt="" />
+        </a>
+
+        <a href="https://github.com/gullbra" 
+          target="_blank">
+            <img src={logo_linkedin} alt="" />
+        </a>
+  
+      </div>
+    </footer>
   )
 }
 
@@ -67,6 +90,3 @@ const Header = (
     </nav> 
  
  */
-
-
-export default Header

@@ -6,12 +6,14 @@ import { useAuth0 } from "@auth0/auth0-react";
 // import './styles/App.css';
 import './styles/base.css'
 
+import {Header, Footer} from './components/HeaderFooter';
+/*
 import UserProfile from './components/UserProfile';
 import ProtectedRoute from './components/auth/protected-route';
-import Header from './components/Header';
 import List from './components/List';
 import AddEvent from './components/AddEvent';
 import EventPage from './components/EventPage';
+*/
 
 let firstRender:boolean = true
 
@@ -39,6 +41,7 @@ function App() {
         // isAuthenticated={isAuthenticated} 
         // setPartyState={setPartyState} 
         />
+      <Footer/>
 
 
       {/* 

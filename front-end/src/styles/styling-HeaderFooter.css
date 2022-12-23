@@ -10,6 +10,26 @@
   grid-template-columns: 1fr 1fr 1fr;
 }
 
+
+.site__footer {
+  background: var(--color-light);
+
+  height: var(--header-height);
+  width: 100%;
+
+  position: fixed;
+  bottom: 0;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+@media screen and (max-width: 400px) {
+  .site__footer{
+    display: none;
+  }
+}
+
 .header--flex {
   display: flex;
   justify-content: space-around;
