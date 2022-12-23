@@ -13,7 +13,7 @@ import List from './components/List';
 import AddEvent from './components/AddEvent';
 import EventPage from './components/EventPage';
 
-let firstRender = true
+let firstRender:boolean = true
 
 function App() {
 

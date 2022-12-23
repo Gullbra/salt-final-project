@@ -10,7 +10,9 @@ import LoginButton from './auth/Login';
 
 let isAuthenticated = true
 
-const Header = ({ setPartyState }) => {
+const Header = (
+  //{ setPartyState }
+  ) => {
 
   /*
   const { isAuthenticated } = useAuth0();
@@ -22,23 +24,28 @@ const Header = ({ setPartyState }) => {
 
   return (
     <header className='site__header'>
-      <Link to='/'>
-        <img className='header__logo' 
-          // onClick={getList} 
-          src={logo} 
-          alt='Hostr logo' />
-      </Link>
 
-      {/* <div className='header__button'>
+      <header-column class="header--flex">
+        back
+      </header-column>
+
+      <header-column class="header--flex">
+        <Link to='/'>
+          <img className='header__logo' 
+            // onClick={getList} 
+            src={logo} 
+            alt='Hostr logo' />
+        </Link>
+      </header-column>
+
+      <header-column class="header--flex">
         {isAuthenticated 
-            ? "profile"
-              //<Link to='/userprofile'>
-              //  profile
-              //</Link>
-            : "signup"
-
-        }
-      </div> */}
+              ? "profile"
+                //<Link to='/userprofile'>
+                //  profile
+                //</Link>
+              : "signup"}        
+      </header-column>
 
     </header>
   )
