@@ -32,6 +32,8 @@ const dbConnect = async (req, res, next) => {
 const dbClose = () => {
   client.close();
   console.log("Connection closed\n")
+  // TODO
+  // add function taking dbClose as a callback after 5 seconds
 }
 
 app.route('/api/events')

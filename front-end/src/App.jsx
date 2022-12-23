@@ -1,8 +1,9 @@
-import './App.css';
 import { useState, useEffect } from 'react'
 import axios from 'axios';
 import { Routes, Route } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+
+import './App.css';
 
 import UserProfile from './components/UserProfile';
 import ProtectedRoute from './components/auth/protected-route';
