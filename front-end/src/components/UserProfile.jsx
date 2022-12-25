@@ -2,11 +2,11 @@ import { useAuth0 } from "@auth0/auth0-react";
 import './UserProfile.css';
 import { Link } from 'react-router-dom'
 import LogoutButton from './auth/Logout';
-import List from "./List";
+import List from "./EventList";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const UserProfile = ({ partyState, setPartyState }) => {
+const UserProfile = ({ eventState, setPartyState }) => {
   
   const { user, isLoading, isAuthenticated } = useAuth0();
   const [ yourParties, setYourParties ] = useState([])
@@ -40,7 +40,7 @@ const UserProfile = ({ partyState, setPartyState }) => {
       </div>
       <h2>My events</h2>
       <List
-        partyState={partyState} 
+        eventState={eventState} 
         setPartyState={setPartyState} 
         yourParties={yourParties} 
         setYourParties={setYourParties}

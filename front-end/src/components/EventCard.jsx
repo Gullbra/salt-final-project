@@ -3,7 +3,7 @@ import axios from 'axios'
 import { DateTime } from 'luxon'
 import { Link } from 'react-router-dom';
 
-const EventCard = ({ party, partyState, setPartyState, yourParties, setYourParties, showDelBtn }) => {
+const EventCard = ({ party, eventState, setPartyState, yourParties, setYourParties, showDelBtn }) => {
   const { title, location, date } = party
 
   const formatedDate = DateTime.fromISO(date)
@@ -20,9 +20,9 @@ const EventCard = ({ party, partyState, setPartyState, yourParties, setYourParti
           setYourParties(newYourParties)
         }
 
-        const bigIndex = partyState.findIndex(partyInState => partyInState._id === party._id)
+        const bigIndex = eventState.findIndex(partyInState => partyInState._id === party._id)
         if (bigIndex !== -1) {
-          const newPartyState = partyState.slice()
+          const newPartyState = eventState.slice()
           newPartyState.splice(bigIndex, 1)
           setPartyState(newPartyState)
         } else {

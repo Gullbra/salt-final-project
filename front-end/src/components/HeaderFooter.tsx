@@ -1,27 +1,31 @@
 import { Link } from 'react-router-dom'
 import axios from 'axios';
 import { useAuth0 } from "@auth0/auth0-react";
+import { useLocation } from 'react-router-dom'
 
 import '../styles/styling-HeaderFooter.css';
 import logo_site from '../assets/logo_site.svg'
 import logo_github from '../assets/logo_github.svg'
 import logo_linkedin from '../assets/logo_linkedin.svg'
 
-import icon_key from '../assets/icon_key.svg'
-import icon_account from '../assets/icon_account.svg'
-import LoginButton from './auth/Login';
+// import icon_key from '../assets/icon_key.svg'
+// import icon_account from '../assets/icon_account.svg'
+// import LoginButton from './auth/Login';
 
 let isAuthenticated = true
 
 export const Header = (
-  //{ setPartyState }
+  //{ setEventState }
   ) => {
 
+  console.log(
+    useLocation().pathname
+  )
   /*
   const { isAuthenticated } = useAuth0();
   const getList = () => {
     axios.get(`${process.env.REACT_APP_DOMAIN}/api/events`)
-      .then(response => setPartyState(response.data))
+      .then(response => setEventState(response.data))
   }
   */
 
@@ -29,7 +33,10 @@ export const Header = (
     <header className='site__header'>
 
       <header-column class="header--flex">
-        back
+        {useLocation().pathname !== '/' 
+          &&  <div className='material-symbols-outlined header__account_icons'>
+                chevron_left
+              </div>}
       </header-column>
 
       <header-column class="header--flex">
@@ -42,12 +49,11 @@ export const Header = (
       </header-column>
 
       <header-column class="header--flex">
-        {isAuthenticated 
-              ? "profile"
-                //<Link to='/userprofile'>
-                //  profile
-                //</Link>
-              : "signup"}        
+        {/* <Link to={isAuthenticated ? '/userprofile' : '/login'}> */}
+          <div className='material-symbols-outlined header__account_icons'>
+            {isAuthenticated ? "account_circle": "key"}
+          </div>
+        {/* </Link>     */}
       </header-column>
 
     </header>
