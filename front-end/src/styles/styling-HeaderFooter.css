@@ -6,6 +6,7 @@
 
   text-align: center;
   position: fixed;
+  top: 0;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 }
@@ -19,13 +20,13 @@
   position: fixed;
   bottom: 0;
 
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  display: none;
 }
-@media screen and (max-width: 400px) {
+@media screen and (min-width: 400px) {
   .site__footer{
-    display: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
   }
 }
 

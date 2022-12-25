@@ -18,6 +18,16 @@
   --color-medium: rgba(39, 145, 145);
 }
 
+.site__main {
+  margin-top: var(--header-height);
+  max-height: calc(100vh - var(--header-height));
+}
+@media screen and (min-width: 400px) {
+  .site__main {
+    max-height: calc(100vh - 2 * var(--header-height));
+  }
+}
+
 .material-symbols-outlined {
   color: var(--color-extra-light);
   font-variation-settings:

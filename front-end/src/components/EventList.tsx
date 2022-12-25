@@ -1,24 +1,36 @@
+import { prototype } from 'module';
 import React from 'react';
 import { Link } from 'react-router-dom'
 
 import '../styles/styling-List.css'
+import {PropTypes, IEvent} from '../util/typesAndInterfaces'
 
-// import EventCard from "./EventCard"
+import EventCard from "./EventCard"
 // import Search from "./Search";
 
+
 const EventList = (
-  // {eventState}
+  {eventState}: {eventState:IEvent[]}
   // { eventState, setPartyState, yourParties, setYourParties, showDelBtn }
   ) => {
-  
+    
+
   // const partiesToShow = yourParties ? yourParties : eventState
 
   return (
     <>
       <section>
-        {/* {eventState.map( (party:any, index:number) => {
-          return (<div key={index}>{party.title}</div>)
-        })} */}
+        {eventState.map( (event:IEvent, index:number) => (
+            <EventCard 
+              key={index} 
+              event={event}
+              // showDelBtn={showDelBtn}
+              // eventState={eventState} 
+              // setPartyState={setPartyState} 
+              // yourParties={yourParties} 
+              // setYourParties={setYourParties}
+            />
+        ))}
       </section>
 
     {/* 

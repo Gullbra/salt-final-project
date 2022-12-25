@@ -4,6 +4,8 @@ import { Routes, Route } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
 import './styles/base.css'
+import './styles/loading_spinner.css'
+import {IEvent} from './util/typesAndInterfaces'
 
 import {Header, Footer} from './components/HeaderFooter';
 import EventList from './components/EventList';
@@ -18,19 +20,22 @@ import EventPage from './components/EventPage';
 let firstRender:boolean = true
 
 function App() {
-  
-  const [ eventState, setEventState ] = useState([]);
   /*
   const { isAuthenticated } = useAuth0();
   */
+
+  const [ eventState, setEventState ] = useState<IEvent[]>([]);
+  const [ isLoading, setIsLoading ] = useState(true)
   useEffect(() => {
     firstRender 
       ? firstRender = false
       : axios
         .get(`${process.env.REACT_APP_DOMAIN}/api/events`)
-        .then(response => setEventState(response.data))
+        .then(response => {
+          setIsLoading(false)
+          setEventState(response.data)
+        })
   }, [])
-
 
   return (
     <>
@@ -38,19 +43,24 @@ function App() {
         // isAuthenticated={isAuthenticated} 
         // setEventState={setEventState} 
         />
+      <main className='site__main'>
+        <Routes>
+          <Route 
+            path="/" 
+            element={
+              isLoading
+                ? <div className="lds-dual-ring"></div>
+                : <EventList 
+                    eventState={eventState} 
+                  // setEventState={setEventState}
+                  />
+            } 
+          />
+        </Routes> 
+      </main>
       <Footer/>
 
-      <Routes>
-        <Route 
-          path="/" 
-          element={
-            <EventList 
-              eventState={eventState} 
-              // setEventState={setEventState}
-            />
-          } 
-        />
-      </Routes> 
+
 
       {/* 
 

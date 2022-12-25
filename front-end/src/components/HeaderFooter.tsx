@@ -18,9 +18,9 @@ export const Header = (
   //{ setEventState }
   ) => {
 
-  console.log(
-    useLocation().pathname
-  )
+  // console.log(
+  //   useLocation().pathname
+  // )
   /*
   const { isAuthenticated } = useAuth0();
   const getList = () => {
