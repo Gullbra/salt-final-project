@@ -2,11 +2,15 @@
   /*
   border: 1px solid black;
   */
-  height: 6rem;
-  margin: 0.5rem;
+  height: 9rem;
+  
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
   color: var(--color-dark);
   background-color: var(--color-light);
   border-radius: 0.5rem;
+  border: 1px solid var(--color-dark);
 
   text-decoration: none;
   cursor: pointer;
@@ -19,7 +23,7 @@
   */
 }
 
-.event-card__title, .event-card__desc {
+.event-card__title, .event-card__desc, .event-card--grid {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }
@@ -30,10 +34,22 @@
 }
 
 .event-card__desc {
-  height: 2rem;
+  margin-top: 0.5rem;
+  height: 3rem;
   overflow: hidden;
   /*
   background: linear-gradient(#000, #fff);
   */
   color: var(--color-extra-light);
+}
+
+.event-card--grid{
+  margin-top: 0.5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.event-card__grid-elements{
+  overflow: hidden;
+  height: 1.5rem;
 }

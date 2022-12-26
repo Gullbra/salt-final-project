@@ -18,11 +18,11 @@ const EventList = (
   // const partiesToShow = yourParties ? yourParties : eventState
 
   return (
-    <>
+    <list-wrapper class="main__list-wrapper">
       <section className='main__event-list'>
-        {eventState.map( (event:IEvent, index:number) => (
+        {eventState.map( (event:IEvent) => (
             <EventCard 
-              key={index} 
+              key={event._id} 
               event={event}
               // showDelBtn={showDelBtn}
               // eventState={eventState} 
@@ -53,7 +53,7 @@ const EventList = (
     
     <Link className="list_eventLink " to='/addevent'><span className="material-symbols-outlined plus-icon">add_circle</span></Link> 
     */}
-    </>
+    </list-wrapper>
   )
 }
 

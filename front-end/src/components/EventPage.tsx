@@ -1,15 +1,21 @@
 /*
-import './EventPage.css'
 import { DateTime } from 'luxon'
 import { Link } from 'react-router-dom'
 import { useAuth0 } from "@auth0/auth0-react";
 import { useRef, useState } from 'react';
 import axios from 'axios';
 */
+import '../styles/styling-EventPage.css'
+
+import { IEvent } from '../util/typesAndInterfaces'
+
 
 const EventPage = (
   // { party, setPartyState }
+  {event} : {event: IEvent}
   ) => {
+
+  const { _id, title, desc, location, time_and_date} = event
 
   /*
   const { user } = useAuth0()
@@ -57,8 +63,12 @@ const EventPage = (
   */
 
   return (
-    <>
-    </>
+    <article className='main__event-page'>
+      <h2 className='event-page__title'>{title}</h2>
+      <p className='event-page__desc'>{desc}</p>
+      <p>{time_and_date}</p>
+      <p>{location}</p>
+    </article>
 
     /*
     <div className='EventPage__test'>

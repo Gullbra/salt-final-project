@@ -1,3 +1,16 @@
+
+.main__event-page{
+  margin-top: 2rem;
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.event-page__title, .event-page__desc {
+  margin-bottom: 1rem;
+}
+
+
+/*
 .EventPage__test {
     display: flex;
     flex-direction: column;
@@ -111,3 +124,4 @@ input, textarea {
         font-size: 1.5rem;
     }
 }
+*/

@@ -2,7 +2,7 @@ interface IEvent {
   title: string;
   desc?: string;
   location?: string;
-  date?: string;
+  time_and_date?: string;
   _id?: string;
 }
 type PropTypes = {

@@ -9,7 +9,7 @@ const EventCard = (
   //{ party, eventState, setPartyState, yourParties, setYourParties, showDelBtn }
   {event}:{event:IEvent}
   ) => {
-  const { title } = event
+  const { _id, title, desc, location, time_and_date} = event
 
   // const formatedDate = DateTime.fromISO(date)
 
@@ -41,13 +41,15 @@ const EventCard = (
   return (
     <Link 
       className='event-list__event-card' 
-      to={`/events/${event._id}`}>
+      to={`/events/${_id}`}>
         
-      <h2 className="event-card__title">
-        {/* {title} */}
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi suscipit doloremque itaque illo laborum culpa iste quisquam dolores deleniti accusamus et tempore delectus omnis, provident placeat assumenda veniam. Eaque, cum.
-      </h2>
-      <p className='event-card__desc'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero quia perferendis sequi, dolore maiores inventore quo accusamus aliquid necessitatibus tempore sint aut accusantium nihil soluta labore. Pariatur quia iusto repellat.</p>
+      <h2 className="event-card__title">{title}</h2>
+      <p className='event-card__desc'>{desc}</p>
+      <grid-wrapper class="event-card--grid">
+        <p className='event-card__grid-elements'>{time_and_date}</p>
+        <p className='event-card__grid-elements'></p>
+        <p className='event-card__grid-elements'>{location}</p>
+      </grid-wrapper>
     </Link>
     // <Link className="eventCard" to={`/events/${party._id}`}>
     //   <h2 className="eventCard__title">{title}</h2>
