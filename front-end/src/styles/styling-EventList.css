@@ -1,0 +1,4 @@
+.main__event-list {
+  display: flex;
+  flex-flow: column;
+}

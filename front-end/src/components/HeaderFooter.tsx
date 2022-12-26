@@ -1,15 +1,13 @@
 import { Link } from 'react-router-dom'
-import axios from 'axios';
-import { useAuth0 } from "@auth0/auth0-react";
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
+// import axios from 'axios';
+// import { useAuth0 } from "@auth0/auth0-react";
 
 import '../styles/styling-HeaderFooter.css';
 import logo_site from '../assets/logo_site.svg'
 import logo_github from '../assets/logo_github.svg'
 import logo_linkedin from '../assets/logo_linkedin.svg'
 
-// import icon_key from '../assets/icon_key.svg'
-// import icon_account from '../assets/icon_account.svg'
 // import LoginButton from './auth/Login';
 
 let isAuthenticated = true
@@ -18,6 +16,7 @@ export const Header = (
   //{ setEventState }
   ) => {
 
+  const navigate = useNavigate()
   // console.log(
   //   useLocation().pathname
   // )
@@ -34,9 +33,12 @@ export const Header = (
 
       <header-column class="header--flex">
         {useLocation().pathname !== '/' 
-          &&  <div className='material-symbols-outlined header__account_icons'>
+          &&  <nav 
+                className='material-symbols-outlined header__account_icons'
+                onClick={() => navigate(-1)}
+              >
                 chevron_left
-              </div>}
+              </nav>}
       </header-column>
 
       <header-column class="header--flex">
@@ -50,9 +52,9 @@ export const Header = (
 
       <header-column class="header--flex">
         {/* <Link to={isAuthenticated ? '/userprofile' : '/login'}> */}
-          <div className='material-symbols-outlined header__account_icons'>
+          <nav className='material-symbols-outlined header__account_icons'>
             {isAuthenticated ? "account_circle": "key"}
-          </div>
+          </nav>
         {/* </Link>     */}
       </header-column>
 

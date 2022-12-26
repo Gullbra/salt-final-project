@@ -1,6 +1,6 @@
 import axios from 'axios'
-// import { DateTime } from 'luxon'
 import { Link } from 'react-router-dom';
+// import { DateTime } from 'luxon'
 
 import '../styles/styling-EventCard.css'
 import { IEvent } from '../util/typesAndInterfaces';
@@ -39,11 +39,16 @@ const EventCard = (
   */
 
   return (
-    <>
-      <div className='list__card'>
-        <h2 className="eventCard__title">{title}</h2>
-      </div>
-    </>
+    <Link 
+      className='event-list__event-card' 
+      to={`/events/${event._id}`}>
+        
+      <h2 className="event-card__title">
+        {/* {title} */}
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi suscipit doloremque itaque illo laborum culpa iste quisquam dolores deleniti accusamus et tempore delectus omnis, provident placeat assumenda veniam. Eaque, cum.
+      </h2>
+      <p className='event-card__desc'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Libero quia perferendis sequi, dolore maiores inventore quo accusamus aliquid necessitatibus tempore sint aut accusantium nihil soluta labore. Pariatur quia iusto repellat.</p>
+    </Link>
     // <Link className="eventCard" to={`/events/${party._id}`}>
     //   <h2 className="eventCard__title">{title}</h2>
     //   <ul className='eventCard__list'>

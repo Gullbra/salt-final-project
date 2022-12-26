@@ -1,5 +1,39 @@
-.list__card{
+.event-list__event-card{
+  /*
   border: 1px solid black;
+  */
   height: 6rem;
   margin: 0.5rem;
+  color: var(--color-dark);
+  background-color: var(--color-light);
+  border-radius: 0.5rem;
+
+  text-decoration: none;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  /*
+  box-shadow: 0.5px 1px 5px 1px var(--color-dark);
+  */
+}
+
+.event-card__title, .event-card__desc {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.event-card__title {
+  height: 2rem;
+  overflow: hidden;
+}
+
+.event-card__desc {
+  height: 2rem;
+  overflow: hidden;
+  /*
+  background: linear-gradient(#000, #fff);
+  */
+  color: var(--color-extra-light);
 }

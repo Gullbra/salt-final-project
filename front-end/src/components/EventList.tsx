@@ -2,7 +2,7 @@ import { prototype } from 'module';
 import React from 'react';
 import { Link } from 'react-router-dom'
 
-import '../styles/styling-List.css'
+import '../styles/styling-EventList.css'
 import {PropTypes, IEvent} from '../util/typesAndInterfaces'
 
 import EventCard from "./EventCard"
@@ -19,7 +19,7 @@ const EventList = (
 
   return (
     <>
-      <section>
+      <section className='main__event-list'>
         {eventState.map( (event:IEvent, index:number) => (
             <EventCard 
               key={index} 

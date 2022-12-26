@@ -4,17 +4,18 @@ import { Routes, Route } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
 import './styles/base.css'
+import './styles/google-symbols.css'
 import './styles/loading_spinner.css'
 import {IEvent} from './util/typesAndInterfaces'
 
 import {Header, Footer} from './components/HeaderFooter';
 import EventList from './components/EventList';
+import EventPage from './components/EventPage';
 
 /*
 import UserProfile from './components/UserProfile';
 import ProtectedRoute from './components/auth/protected-route';
 import AddEvent from './components/AddEvent';
-import EventPage from './components/EventPage';
 */
 
 let firstRender:boolean = true
@@ -39,23 +40,33 @@ function App() {
 
   return (
     <>
-      <Header 
-        // isAuthenticated={isAuthenticated} 
-        // setEventState={setEventState} 
-        />
-      <main className='site__main'>
+      <Header/>
+      <main className={isLoading ? 'site__main main--flex' : 'site__main'}>
         <Routes>
           <Route 
             path="/" 
             element={
               isLoading
-                ? <div className="lds-dual-ring"></div>
+                ? <loading-spinner class="lds-dual-ring"/>
                 : <EventList 
-                    eventState={eventState} 
-                  // setEventState={setEventState}
+                    eventState={eventState}
                   />
             } 
           />
+          {eventState.map(event => (
+            event._id && (
+              <Route
+                key={event._id} 
+                path={`/events/${event._id}`} 
+                element={
+                  <EventPage 
+                    // event={event}
+                    // setEventState={setEventState}
+                  />
+                }
+              />
+            )
+          ))}
         </Routes> 
       </main>
       <Footer/>

@@ -1,11 +1,17 @@
+/*
 import './EventPage.css'
 import { DateTime } from 'luxon'
 import { Link } from 'react-router-dom'
 import { useAuth0 } from "@auth0/auth0-react";
 import { useRef, useState } from 'react';
 import axios from 'axios';
+*/
 
-const EventPage = ({ party, setPartyState }) => {
+const EventPage = (
+  // { party, setPartyState }
+  ) => {
+
+  /*
   const { user } = useAuth0()
   const inputTitle = useRef()
   const inputDesc = useRef()
@@ -48,8 +54,13 @@ const EventPage = ({ party, setPartyState }) => {
           })
       })   
   }
+  */
 
   return (
+    <>
+    </>
+
+    /*
     <div className='EventPage__test'>
     <section className="EventPage">
       {editingMode 
@@ -99,6 +110,7 @@ const EventPage = ({ party, setPartyState }) => {
 
     </section>
     </div>
+    */
   )
 }
 
