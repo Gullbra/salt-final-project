@@ -1,13 +1,38 @@
-import { useAuth0 } from "@auth0/auth0-react";
+/*
 import './UserProfile.css';
 import { Link } from 'react-router-dom'
 import LogoutButton from './auth/Logout';
 import List from "./EventList";
 import { useState, useEffect } from "react";
 import axios from "axios";
+*/
+import { useAuth0 } from "@auth0/auth0-react";
+// import { useLayoutEffect } from "react";
+// import { useNavigate } from "react-router-dom";
 
-const UserProfile = ({ eventState, setPartyState }) => {
+const UserProfile = (
+  //{ eventState, setPartyState }
+  ) => {
+
+  const { 
+    logout, 
+    // isAuthenticated, 
+    // loginWithRedirect 
+  } = useAuth0();
+
+  /*
+  const navigate = useNavigate()
+
+  useLayoutEffect (() => {
+    if (!isAuthenticated) {      
+      navigate(-1)
+      loginWithRedirect()
+    }
+  }, [isAuthenticated])
+  */
+
   
+    /*
   const { user, isLoading, isAuthenticated } = useAuth0();
   const [ yourParties, setYourParties ] = useState([])
   
@@ -25,8 +50,16 @@ const UserProfile = ({ eventState, setPartyState }) => {
   if (isLoading) {
     return <div>Loading ...</div>;
   }
+  */
 
   return (
+    <>
+      <button 
+        onClick={() => logout({ returnTo: window.location.origin })}>
+        Log Out
+      </button>
+    </>
+    /*
     isAuthenticated &&  (    
     <div className="userProfile">
       <Link className="userProfile__listLink" to='/'>
@@ -48,6 +81,7 @@ const UserProfile = ({ eventState, setPartyState }) => {
         <LogoutButton />
       </div>
     )
+    */
   )
 }
 
