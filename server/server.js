@@ -48,7 +48,7 @@ app.route('/api/events')
     // }
 
     req.db.collection('events')
-      .find(searchObj).toArray()
+      .find({}).skip(0).limit(2).toArray()
       .then(result => res.status(200).json(result))
       .finally(() => next())
   })

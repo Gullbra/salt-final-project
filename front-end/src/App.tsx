@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios';
-import { Routes, Route } from "react-router-dom";
-// import { useAuth0 } from "@auth0/auth0-react";
+import { Routes, Route,
+  useNavigate, 
+  useLocation 
+} from "react-router-dom";
 
 import './styles/base.css'
 import './styles/google-symbols.css'
@@ -13,21 +15,36 @@ import EventList from './components/EventList';
 import EventPage from './components/EventPage';
 import UserProfile from './components/UserProfile';
 import CreateEvent from './components/CreateEvent';
-// import ProtectedRoute from './components/auth/protected-route';
 
 let firstRender:boolean = true
 
+function getPageFromUrl(query:any):number {
+  if (!query) return 1
+  const match = query.match(/page=[\d]+/) 
+  // if (!query.match(/page=[\d]+/)) return 1
+  // if (!query.match(/page=[\d]+/)[0].split('=')[1]) return 1
+
+  return match 
+    ? Number(match[0].split('=')[1])
+    : 1
+}
+
 function App() {
-  
+  // const currentPath = useLocation().pathname
+  const currentSearch = useLocation().search
+  const initPage = getPageFromUrl(currentSearch)  
+  const navigate = useNavigate()
+
+  const [ page, setPage ] = useState<number>(initPage)
   const [ eventState, setEventState ] = useState<IEvent[]>([]);
   const [ eventsLoading, setEventsLoading ] = useState<boolean>(true)
   const [ hasErrored, setHasErrored ] = useState<(boolean | string)[]>([false])
-  
+    
   useEffect(() => {
     firstRender 
       ? firstRender = false
       : axios
-        .get(`${process.env.REACT_APP_DOMAIN}/api/events`)
+        .get(`${process.env.REACT_APP_DOMAIN}/api/events/`) //?page=${page}
         .then(response => {
           setEventsLoading(false)
           setEventState(response.data)
@@ -39,7 +56,14 @@ function App() {
         .finally(()=>{
           console.log("📮 axios called")
         })
-  }, [])
+  }, [
+    //page
+  ])
+
+  useEffect(()=> {
+    navigate(`/?page=${page}`)
+  }, [page])
+
 
   return (
     <>
@@ -47,15 +71,29 @@ function App() {
       <main className={eventsLoading || hasErrored[0] ? 'site__main main--flex' : 'site__main'}>
         <Routes>
           <Route 
-            path="/" 
+            path="/"
             element={
               eventsLoading
                 ? <loading-spinner class="lds-dual-ring"/>
                 : hasErrored[0]
                     ? <div>{hasErrored[1]}</div>
-                    : <EventList 
-                        eventState={eventState}
-                      />
+                    : <>
+                        <p>{`page: ${page}`}</p>
+                        <EventList 
+                          eventState={eventState}
+                        />
+                        {page > 1 && (
+                          <button
+                            onClick={() => {setPage(page - 1)}}
+                          >
+                            prev page
+                          </button>
+                        )}
+                        <button
+                          onClick={()=>{setPage(page + 1)}}
+                        >next page
+                        </button>
+                      </>
             } 
           />
           {eventState.map(event => (
