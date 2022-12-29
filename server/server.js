@@ -46,9 +46,10 @@ app.route('/api/events')
     // if (req.query && req.query.location) {
     //     searchObj.location = new RegExp('^' + req.query.location, 'i') ;
     // }
+    const pageLimit = 2
 
     req.db.collection('events')
-      .find({}).skip(0).limit(2).toArray()
+      .find({}).skip((req.query.page - 1)*pageLimit).limit(pageLimit).toArray()
       .then(result => res.status(200).json(result))
       .finally(() => next())
   })

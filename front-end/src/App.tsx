@@ -21,16 +21,12 @@ let firstRender:boolean = true
 function getPageFromUrl(query:any):number {
   if (!query) return 1
   const match = query.match(/page=[\d]+/) 
-  // if (!query.match(/page=[\d]+/)) return 1
-  // if (!query.match(/page=[\d]+/)[0].split('=')[1]) return 1
-
-  return match 
+  return match
     ? Number(match[0].split('=')[1])
     : 1
 }
 
 function App() {
-  // const currentPath = useLocation().pathname
   const currentSearch = useLocation().search
   const initPage = getPageFromUrl(currentSearch)  
   const navigate = useNavigate()
@@ -44,7 +40,7 @@ function App() {
     firstRender 
       ? firstRender = false
       : axios
-        .get(`${process.env.REACT_APP_DOMAIN}/api/events/`) //?page=${page}
+        .get(`${process.env.REACT_APP_DOMAIN}/api/events/?page=${page}`) //?page=${page}
         .then(response => {
           setEventsLoading(false)
           setEventState(response.data)
@@ -56,9 +52,7 @@ function App() {
         .finally(()=>{
           console.log("📮 axios called")
         })
-  }, [
-    //page
-  ])
+  }, [page])
 
   useEffect(()=> {
     navigate(`/?page=${page}`)
@@ -89,10 +83,12 @@ function App() {
                             prev page
                           </button>
                         )}
-                        <button
-                          onClick={()=>{setPage(page + 1)}}
-                        >next page
-                        </button>
+                        {eventState.length === 2 && (
+                          <button
+                            onClick={()=>{setPage(page + 1)}}
+                          >next page
+                          </button>
+                        )}
                       </>
             } 
           />
