@@ -1,10 +1,39 @@
-.addEvent {
-    display: flex;
-    flex-direction: column;
+
+.main__form-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.main__form-element {
+  /* width: 200px; */
+  display: flex;
+  flex-direction: column;
+}
+
+.form-element__label {
+  margin-top: 1rem;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+.form-element__input {
+  margin-top: 0.5rem;
+  display: block;
+  width: 100%;
+}
+.--desc {
+  height: 6rem;
+}
+.form-element__button {
+  margin-top: 2rem;
+}
+
+/*
+.createEvent {
     width: max(17rem, 60%);
 }
 
-.addEvent__div {
+.createEvent__div {
     padding-top: 10rem;
     background-image: url('../assets/backgroundphone.png');
     background-repeat: no-repeat;
@@ -15,7 +44,7 @@
     justify-content: center;
 }
 
-.addEvent__listLink {
+.createEvent__listLink {
     margin: 1rem;
     padding: 0.5rem;
     position: fixed;
@@ -30,7 +59,7 @@
     font-weight: 600;
 }
 
-.addEvent__button {
+.createEvent__button {
     cursor: pointer;
     margin: 1rem;
     padding: 0.5rem;
@@ -46,7 +75,7 @@
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-.addEvent input, .addEvent textarea {
+.createEvent input, .createEvent textarea {
     background-color: rgba(12, 13, 13, 0.8);
     color: #FCF9F9;
     border: none;
@@ -58,7 +87,7 @@
     margin-top: 0.25rem;
 }
 
-.addEvent__input-desc{
+.createEvent__input-desc{
     resize: vertical;
     overflow: auto;
     color: white;
@@ -68,3 +97,4 @@
 input {
     color-scheme: dark;
 }
+*/

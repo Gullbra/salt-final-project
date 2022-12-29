@@ -5,4 +5,5 @@ export interface IntrinsicElements {
   "loading-spinner": any;
   "grid-wrapper": any;
   "list-wrapper": any;
+  "form-wrapper": any;
 }

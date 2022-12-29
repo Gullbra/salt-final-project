@@ -1,9 +1,11 @@
 interface IEvent {
   title: string;
-  desc?: string;
-  location?: string;
-  time_and_date?: string;
+  desc: string;
+  location: string;
+  time_and_date: string;
+  userID?: string;
   _id?: string;
+
 }
 type PropTypes = {
   eventState?:IEvent[] 

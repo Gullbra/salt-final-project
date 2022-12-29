@@ -1,9 +1,8 @@
-import { prototype } from 'module';
 import React from 'react';
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
 import '../styles/styling-EventList.css'
-import {PropTypes, IEvent} from '../util/typesAndInterfaces'
+import {IEvent} from '../util/typesAndInterfaces'
 
 import EventCard from "./EventCard"
 // import Search from "./Search";
@@ -51,7 +50,7 @@ const EventList = (
       }
     </section>
     
-    <Link className="list_eventLink " to='/addevent'><span className="material-symbols-outlined plus-icon">add_circle</span></Link> 
+    <Link className="list_eventLink " to='/createevent'><span className="material-symbols-outlined plus-icon">add_circle</span></Link> 
     */}
     </list-wrapper>
   )

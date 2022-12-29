@@ -12,43 +12,44 @@ import {Header, Footer} from './components/HeaderFooter';
 import EventList from './components/EventList';
 import EventPage from './components/EventPage';
 import UserProfile from './components/UserProfile';
-import ProtectedRoute from './components/auth/protected-route';
-
-/*
-import AddEvent from './components/AddEvent';
-*/
+import CreateEvent from './components/CreateEvent';
+// import ProtectedRoute from './components/auth/protected-route';
 
 let firstRender:boolean = true
 
 function App() {
   
   const [ eventState, setEventState ] = useState<IEvent[]>([]);
-  const [ isLoading, setIsLoading ] = useState(true)
-  const [ hasErrored, setHasErrored ] = useState([false])
+  const [ eventsLoading, setEventsLoading ] = useState<boolean>(true)
+  const [ hasErrored, setHasErrored ] = useState<(boolean | string)[]>([false])
+  
   useEffect(() => {
     firstRender 
       ? firstRender = false
       : axios
         .get(`${process.env.REACT_APP_DOMAIN}/api/events`)
         .then(response => {
-          setIsLoading(false)
+          setEventsLoading(false)
           setEventState(response.data)
         })
         .catch(err => {
-          setIsLoading(false)
+          setEventsLoading(false)
           setHasErrored([true, err.message])
+        })
+        .finally(()=>{
+          console.log("📮 axios called")
         })
   }, [])
 
   return (
     <>
       <Header/>
-      <main className={isLoading || hasErrored[0] ? 'site__main main--flex' : 'site__main'}>
+      <main className={eventsLoading || hasErrored[0] ? 'site__main main--flex' : 'site__main'}>
         <Routes>
           <Route 
             path="/" 
             element={
-              isLoading
+              eventsLoading
                 ? <loading-spinner class="lds-dual-ring"/>
                 : hasErrored[0]
                     ? <div>{hasErrored[1]}</div>
@@ -74,29 +75,28 @@ function App() {
           <Route 
             path="/userprofile" 
             element={
-              <ProtectedRoute>
-                <UserProfile 
-                  // eventState={eventState} 
-                  // setEventState={setEventState}
-                />
-              </ProtectedRoute>
+              //<ProtectedRoute>
+              <UserProfile 
+                // eventState={eventState} 
+                // setEventState={setEventState}
+              />
+              //</ProtectedRoute>
             } 
           />
+          <Route
+            path="/createevent"
+            element={
+              //<ProtectedRoute isAuthenticated={isAuthenticated}>
+              <CreateEvent 
+                //eventState={eventState} 
+                setEventState={setEventState}
+                />
+              //</ProtectedRoute>
+          }
+        /> 
         </Routes> 
       </main>
       <Footer/>
-
-
-      {/* 
-        <Route
-          path="/addevent"
-          element={
-            <ProtectedRoute isAuthenticated={isAuthenticated}>
-              <AddEvent eventState={eventState} setEventState={setEventState}/>
-            </ProtectedRoute>
-          }
-        /> 
-      */}
     </>
   );
 }

@@ -1,12 +1,16 @@
 /*
-import './UserProfile.css';
 import { Link } from 'react-router-dom'
 import LogoutButton from './auth/Logout';
 import List from "./EventList";
 import { useState, useEffect } from "react";
 import axios from "axios";
 */
+import { useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useEffect } from "react";
+
+import '../styles/styling-UserProfile.css';
+
 // import { useLayoutEffect } from "react";
 // import { useNavigate } from "react-router-dom";
 
@@ -14,23 +18,19 @@ const UserProfile = (
   //{ eventState, setPartyState }
   ) => {
 
-  const { 
-    logout, 
-    // isAuthenticated, 
-    // loginWithRedirect 
+  const navigate = useNavigate();
+  const {
+    isAuthenticated, isLoading, loginWithRedirect, logout, user
   } = useAuth0();
 
-  /*
-  const navigate = useNavigate()
-
-  useLayoutEffect (() => {
-    if (!isAuthenticated) {      
-      navigate(-1)
-      loginWithRedirect()
-    }
-  }, [isAuthenticated])
-  */
-
+  useEffect(() => {}, [isLoading])
+  
+  if (isLoading) {
+    return <loading-spinner class="lds-dual-ring"/>
+  } else if (!isAuthenticated) {
+    loginWithRedirect()
+    return <loading-spinner class="lds-dual-ring"/>;
+  }
   
     /*
   const { user, isLoading, isAuthenticated } = useAuth0();
@@ -52,12 +52,32 @@ const UserProfile = (
   }
   */
 
+  // user && console.log(user)
+
   return (
     <>
-      <button 
-        onClick={() => logout({ returnTo: window.location.origin })}>
-        Log Out
-      </button>
+      {user &&
+        <article className="main__profile-wrapper">
+          <img className="userProfile__profile" src={user.picture} alt='Profile Pic'/>
+          <p>Name: {user.nickname}</p>
+          <p>Mail: {user.email} </p>
+
+          <button>
+            manages your events
+          </button>
+          <button
+            onClick={() => navigate('/createevent')}>
+            add new event
+          </button>
+          <button>
+            account settings
+          </button>
+          <button 
+            onClick={() => logout({ returnTo: window.location.origin })}>
+            Log Out
+          </button>
+        </article>
+      }
     </>
     /*
     isAuthenticated &&  (    

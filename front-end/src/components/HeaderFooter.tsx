@@ -14,7 +14,9 @@ export const Header = (
 
   const navigate = useNavigate()
   const currentUrl = useLocation().pathname
-  const { isAuthenticated, loginWithRedirect } = useAuth0();
+  const { 
+    isAuthenticated, 
+  } = useAuth0();
 
   /*
   const getList = () => {
@@ -27,10 +29,14 @@ export const Header = (
     <header className='site__header'>
 
       <header-column class="header--flex">
-        {(currentUrl !== '/' && currentUrl !== '/userprofile') 
+        {(currentUrl !== '/') 
           &&  <nav 
                 className='material-symbols-outlined header__account_icons'
-                onClick={() => navigate(-1)}
+                onClick={() => {
+                  currentUrl === '/userprofile'
+                    ? navigate('/')
+                    : navigate(-1)
+                }}
               >
                 chevron_left
               </nav>}
@@ -46,11 +52,14 @@ export const Header = (
       </header-column>
 
       <header-column class="header--flex">
-        <nav 
-          className='material-symbols-outlined header__account_icons'
-          onClick={() => loginWithRedirect()}>
-          {isAuthenticated ? "account_circle": "key"}
-        </nav>
+
+
+        <Link to='/userprofile'>
+          <nav 
+            className='material-symbols-outlined header__account_icons'
+            // onClick={() => { loginWithRedirect()}}
+          >{isAuthenticated ? "account_circle": "key"}</nav>
+        </Link>
       </header-column>
 
     </header>

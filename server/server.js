@@ -39,13 +39,13 @@ const dbClose = () => {
 app.route('/api/events')
   .all(dbConnect)
   .get((req, res, next) => {
-    const searchObj = {}
-    if (req.query && req.query.title) {
-        searchObj.title = new RegExp('^' + req.query.title, 'i') ;
-    }
-    if (req.query && req.query.location) {
-        searchObj.location = new RegExp('^' + req.query.location, 'i') ;
-    }
+    // const searchObj = {}
+    // if (req.query && req.query.title) {
+    //     searchObj.title = new RegExp('^' + req.query.title, 'i') ;
+    // }
+    // if (req.query && req.query.location) {
+    //     searchObj.location = new RegExp('^' + req.query.location, 'i') ;
+    // }
 
     req.db.collection('events')
       .find(searchObj).toArray()
