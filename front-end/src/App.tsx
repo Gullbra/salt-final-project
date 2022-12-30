@@ -1,9 +1,5 @@
-import { useState, useEffect } from 'react'
-import axios from 'axios';
-import { Routes, Route,
-  useNavigate, 
-  useLocation 
-} from "react-router-dom";
+import { useState } from 'react'
+import { Routes, Route } from "react-router-dom";
 
 import './styles/base.css'
 import './styles/google-symbols.css'
@@ -16,80 +12,21 @@ import EventPage from './components/EventPage';
 import UserProfile from './components/UserProfile';
 import CreateEvent from './components/CreateEvent';
 
-let firstRender:boolean = true
-
-function getPageFromUrl(query:any):number {
-  if (!query) return 1
-  const match = query.match(/page=[\d]+/) 
-  return match
-    ? Number(match[0].split('=')[1])
-    : 1
-}
-
 function App() {
-  const currentSearch = useLocation().search
-  const initPage = getPageFromUrl(currentSearch)  
-  const navigate = useNavigate()
-
-  const [ page, setPage ] = useState<number>(initPage)
   const [ eventState, setEventState ] = useState<IEvent[]>([]);
-  const [ eventsLoading, setEventsLoading ] = useState<boolean>(true)
-  const [ hasErrored, setHasErrored ] = useState<(boolean | string)[]>([false])
-    
-  useEffect(() => {
-    firstRender 
-      ? firstRender = false
-      : axios
-        .get(`${process.env.REACT_APP_DOMAIN}/api/events/?page=${page}`) //?page=${page}
-        .then(response => {
-          setEventsLoading(false)
-          setEventState(response.data)
-        })
-        .catch(err => {
-          setEventsLoading(false)
-          setHasErrored([true, err.message])
-        })
-        .finally(()=>{
-          console.log("📮 axios called")
-        })
-  }, [page])
-
-  useEffect(()=> {
-    navigate(`/?page=${page}`)
-  }, [page])
-
 
   return (
     <>
       <Header/>
-      <main className={eventsLoading || hasErrored[0] ? 'site__main main--flex' : 'site__main'}>
+      <main className={'site__main main--flex'}>
         <Routes>
           <Route 
             path="/"
             element={
-              eventsLoading
-                ? <loading-spinner class="lds-dual-ring"/>
-                : hasErrored[0]
-                    ? <div>{hasErrored[1]}</div>
-                    : <>
-                        <p>{`page: ${page}`}</p>
-                        <EventList 
-                          eventState={eventState}
-                        />
-                        {page > 1 && (
-                          <button
-                            onClick={() => {setPage(page - 1)}}
-                          >
-                            prev page
-                          </button>
-                        )}
-                        {eventState.length === 2 && (
-                          <button
-                            onClick={()=>{setPage(page + 1)}}
-                          >next page
-                          </button>
-                        )}
-                      </>
+              <EventList 
+                eventState={eventState}
+                setEventState={setEventState}
+              />
             } 
           />
           {eventState.map(event => (
@@ -100,7 +37,6 @@ function App() {
                 element={
                   <EventPage 
                     event={event}
-                    // setEventState={setEventState}
                   />
                 }
               />

@@ -1,6 +1,7 @@
 .main__list-wrapper {
   display: flex;
   justify-content: center;
+  flex-direction: column;
 }
 .main__event-list {
   display: flex;
