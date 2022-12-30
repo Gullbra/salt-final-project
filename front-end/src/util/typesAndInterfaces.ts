@@ -7,24 +7,18 @@ interface IEvent {
   _id?: string;
 }
 
-interface IListRedAction {
-  type:string
-  payload?:IListRedState
+interface IListAction {
+  type?:string
+  payload:Partial<IListState>
 }
-interface IListRedState {
+interface IListState {
   page:number
-  eventsloading:boolean
+  eventsLoading:boolean
   hasErrored:(boolean | string)[]
 }
 
-// type PropTypes = {
-//   eventState?:IEvent[] 
-//   event?:IEvent
-// }
-
 export type {
  IEvent,
- IListRedState,
- IListRedAction,
-//  PropTypes
+ IListState,
+ IListAction,
 }
