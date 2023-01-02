@@ -6,6 +6,7 @@ import '../styles/styling-EventList.css'
 
 import {IEvent, IListState, IListAction} from '../util/typesAndInterfaces'
 import EventCard from "./EventCard"
+import { useAuth0 } from '@auth0/auth0-react';
 // import Search from "./Search";
 
 
@@ -23,14 +24,17 @@ const listReducer = (stateObj:IListState, action:IListAction):IListState => {
   return {...stateObj, ...action.payload}
 }
 
-const EventList = ({eventState, setEventState}: {
+const EventList = ({eventState, setEventState, usersEvents}: {
     eventState:IEvent[], 
-    setEventState:React.Dispatch<React.SetStateAction<IEvent[]>>
+    setEventState:React.Dispatch<React.SetStateAction<IEvent[]>>,
+    usersEvents?:boolean
 }) => {
 
   const currentSearch = useLocation().search
+  const currentPath = useLocation().pathname
   const initPage = getPageFromUrl(currentSearch)  
   const navigate = useNavigate()
+  const { user, isLoading } = useAuth0()
 
   const [ listState, setListState ] = useReducer(listReducer, {
     page: initPage,
@@ -39,10 +43,13 @@ const EventList = ({eventState, setEventState}: {
   })
   
   useEffect(() => {
-    firstRender 
+    const fetchURL = usersEvents
+      ? `${process.env.REACT_APP_DOMAIN}/api/events/?page=${listState.page}&user=${user?.sub?.split('|')[1]}`
+      : `${process.env.REACT_APP_DOMAIN}/api/events/?page=${listState.page}`
+    firstRender && (!usersEvents || !isLoading)
       ? firstRender = false
       : axios
-        .get(`${process.env.REACT_APP_DOMAIN}/api/events/?page=${listState.page}`)
+        .get(fetchURL)
         .then(response => {
           setListState({payload:{eventsLoading : false}})
           setEventState(response.data)
@@ -56,12 +63,13 @@ const EventList = ({eventState, setEventState}: {
         .finally(()=>{
           console.log("📮 axios called")
         })
-    navigate(`/?page=${listState.page}`)
-  }, [listState.page])
+    navigate(`${currentPath}?page=${listState.page}`)
+  }, [listState.page, currentPath, user])
 
 
   return (
     <list-wrapper class="main__list-wrapper">
+      {usersEvents && <p>test!</p>}
       {!listState.eventsLoading && !listState.hasErrored[0] && (
         <p>{`page: ${listState.page}`}</p>
       )}      

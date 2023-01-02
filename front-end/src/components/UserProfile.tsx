@@ -62,11 +62,13 @@ const UserProfile = (
           <p>Name: {user.nickname}</p>
           <p>Mail: {user.email} </p>
 
-          <button>
+          <button
+            onClick={() => navigate('/userprofile/events')}
+          >
             manages your events
           </button>
           <button
-            onClick={() => navigate('/createevent')}>
+            onClick={() => navigate('/userprofile/createevent')}>
             add new event
           </button>
           <button>

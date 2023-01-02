@@ -11,6 +11,7 @@ import EventList from './components/EventList';
 import EventPage from './components/EventPage';
 import UserProfile from './components/UserProfile';
 import CreateEvent from './components/CreateEvent';
+import ProtectedRoute from './components/auth/protected-route';
 
 function App() {
   const [ eventState, setEventState ] = useState<IEvent[]>([]);
@@ -54,7 +55,7 @@ function App() {
             } 
           />
           <Route
-            path="/createevent"
+            path="/userprofile/createevent"
             element={
               //<ProtectedRoute isAuthenticated={isAuthenticated}>
               <CreateEvent 
@@ -62,8 +63,20 @@ function App() {
                 setEventState={setEventState}
                 />
               //</ProtectedRoute>
-          }
-        /> 
+            }
+          />
+          <Route
+            path="/userprofile/events"
+            element={
+              <ProtectedRoute>
+                <EventList 
+                  eventState={eventState}
+                  setEventState={setEventState}
+                  usersEvents
+                />
+              </ProtectedRoute>
+            }
+          /> 
         </Routes> 
       </main>
       <Footer/>

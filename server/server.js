@@ -1,6 +1,7 @@
 const express = require("express");
 const { MongoClient, ObjectId } = require('mongodb');
 const cors = require('cors');
+const { query } = require("express");
 require('dotenv').config()
 
 const app = express()
@@ -39,10 +40,12 @@ const dbClose = () => {
 app.route('/api/events')
   .all(dbConnect)
   .get((req, res, next) => {
-    const pageLimit = 2
+    const pageLimit = req.query?.limit ? req.query?.limit : 10
+    const searchObj = {}
+    if(req.query?.user) searchObj.userID = req.query.user
 
     req.db.collection('events')
-      .find({}).skip((req.query.page - 1)*pageLimit).limit(pageLimit).toArray()
+      .find(searchObj).skip((req.query.page - 1)*pageLimit).limit(pageLimit).toArray()
       .then(result => res.status(200).json(result))
       .finally(() => next())
   })

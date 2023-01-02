@@ -40,7 +40,6 @@ const CreateEvent = (
     ) {
       throw new Error("Inputfield(s) is/are empty!")
     }
-    console.log('click')
     
     const newEvent = new Event(
       titleRef.current.value,
