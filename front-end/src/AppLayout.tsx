@@ -3,10 +3,24 @@ import { useLocation, useNavigate } from 'react-router-dom'
 // import axios from 'axios';
 import { useAuth0 } from "@auth0/auth0-react";
 
-import '../styles/styling-HeaderFooter.css';
-import logo_site from '../assets/logo_site.svg'
-import logo_github from '../assets/logo_github.svg'
-import logo_linkedin from '../assets/logo_linkedin.svg'
+import './styles/styling-HeaderFooter.css';
+import logo_site from './assets/logo_site.svg'
+import logo_github from './assets/logo_github.svg'
+import logo_linkedin from './assets/logo_linkedin.svg'
+
+
+const Layout = ({ children }: { children:JSX.Element}) => {
+  return (
+    <>
+      <Header/>
+      <main className={'site__main main--flex'}>
+        {children}
+      </main>
+      <Footer/>
+    </>
+  )
+}
+
 
 export const Header = (
   //{ setEventState }
@@ -88,3 +102,5 @@ export const Footer = () => {
     </footer>
   )
 }
+
+export default Layout
